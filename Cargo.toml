@@ -1,0 +1,10 @@
+[package]
+name = "memory-card"
+version = "0.0.0"
+edition = "2024"
+rust-version = "1.95"
+license = "MIT"
+repository = "https://github.com/constantin-jais/memory-card"
+description = "Local agentic context layer: code map, repo memory, and document/search substrate for coding agents."
+
+[dependencies]
