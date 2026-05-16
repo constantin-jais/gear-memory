@@ -1,3 +1,3 @@
 fn main() {
-    println!("{}", memory_card::summary());
+    println!("{}", gear_memory::summary());
 }

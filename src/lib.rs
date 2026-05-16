@@ -1,4 +1,4 @@
-//! memory-card — Local agentic context layer: code map, repo memory, and document/search substrate for coding agents.
+//! gear-memory — Local agentic context layer: code map, repo memory, and document/search substrate for coding agents.
 //!
 //! This crate is intentionally a minimal skeleton. The first implementation
 //! increments must keep the upstream boundary explicit and preserve the
@@ -15,10 +15,10 @@ pub struct ProjectCard {
 
 /// The repository's initial scope card.
 pub const PROJECT: ProjectCard = ProjectCard {
-    name: "memory-card",
+    name: "gear-memory",
     role: "local agentic context",
     upstream: "basemind",
-    relationship: "Dev/operator tool only for Presto-Matic and Agent-O-Matic; never a product runtime dependency.",
+    relationship: "Dev/operator tool only for Presto-Matic and cos-matic; never a product runtime dependency.",
 };
 
 /// Human-readable summary for CLI smoke runs.
@@ -35,7 +35,7 @@ mod tests {
 
     #[test]
     fn project_card_names_the_repo_and_upstream() {
-        assert_eq!(PROJECT.name, "memory-card");
+        assert_eq!(PROJECT.name, "gear-memory");
         assert_eq!(PROJECT.upstream, "basemind");
         assert!(summary().contains(PROJECT.role));
     }

@@ -6,11 +6,11 @@
 
 ## Context
 
-`memory-card` is a companion repository in the Presto-Matic / Agent-O-Matic ecosystem. Its role is **local agentic context**. It is intentionally separate from the Presto-Matic product repo so heavy dependencies, operational lifecycle, and upstream tracking stay isolated.
+`gear-memory` is a companion repository in the Presto-Matic / cos-matic ecosystem. Its role is **local agentic context**. It is intentionally separate from the Presto-Matic product repo so heavy dependencies, operational lifecycle, and upstream tracking stay isolated.
 
 ## Decision
 
-Build `memory-card` as an upstream-first, sovereign Rust project:
+Build `gear-memory` as an upstream-first, sovereign Rust project:
 
 - track upstream releases/tags/commits explicitly;
 - keep local patches small and temporary;
