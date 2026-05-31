@@ -1,19 +1,53 @@
 # Gear Memory
 
+[![CI](https://github.com/constantin-jais/gear-memory/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/constantin-jais/gear-memory/actions/workflows/ci.yml)
+[![Security](https://github.com/constantin-jais/gear-memory/actions/workflows/security.yml/badge.svg?branch=main)](https://github.com/constantin-jais/gear-memory/actions/workflows/security.yml)
+[![Contracts](https://github.com/constantin-jais/gear-memory/actions/workflows/contracts.yml/badge.svg?branch=main)](https://github.com/constantin-jais/gear-memory/actions/workflows/contracts.yml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+
 **Layer:** Gear — Infrastructure  
 **Role:** local context and memory substrate  
 **Mission:** make local-first source, memory, code graph, event, and provenance references trustworthy without deciding what agents or products should do next.
 
 ---
 
-## Stack Role
+## Stack role
 
+- **Layer:** Gear — Infrastructure.
+- **Role:** local context and memory substrate.
+- **Mission:** make local-first source, memory, code graph, event, and provenance references trustworthy without deciding what agents or products should do next.
 - **Maturity:** `contract-first`.
+- **Scale-ready:** no — contracts/tests exist, but local persistence and indexing are not proven yet.
 - **Current increment:** P0 memory/source/provenance contracts.
 - **Learning value:** local-first memory, source refs, event logs, code maps, and privacy-preserving context.
 - **Next quality step:** prove local persistence/indexing and integrate explicit Note/Loader exports.
 
 See the ecosystem cockpit in [`constantin-jais/ecosystem/status.md`](https://github.com/constantin-jais/constantin-jais/blob/main/ecosystem/status.md).
+
+## Dogfooding
+
+This repository is part of the forge dogfooding loop: the ecosystem should use its own tools to make specs, maturity, contracts, releases, and product documentation observable.
+
+Current visible evidence:
+
+- contract and security workflows exercise memory/source/provenance contracts;
+- README maturity notes keep local persistence and indexing limits explicit;
+- fixtures describe the shape of trustworthy local context.
+
+Expected next evidence:
+
+- publish example context exports and code-map outputs;
+- show Note and Loader handoff evidence through fixtures.
+
+Dogfooding claims should stay backed by visible commands, fixtures, CI workflows, generated reports, or linked docs.
+
+## Forge role
+
+`gear-memory` is Gear infrastructure for trustworthy local context. It lets Rumble, Bolt, and Wrench share source references, memory entries, code maps, events, and provenance without each product inventing storage semantics.
+
+## Boundary
+
+It must not become an agent brain, product UX, raw ingestion engine, or artifact registry. Decisions stay in Bolt, experiences stay in Rumble, extraction stays in Wrench, and distribution stays in Gear Depot/Cable.
 
 ## Purpose
 
