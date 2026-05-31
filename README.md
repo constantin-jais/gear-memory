@@ -6,6 +6,15 @@
 
 ---
 
+## Stack Role
+
+- **Maturity:** `contract-first`.
+- **Current increment:** P0 memory/source/provenance contracts.
+- **Learning value:** local-first memory, source refs, event logs, code maps, and privacy-preserving context.
+- **Next quality step:** prove local persistence/indexing and integrate explicit Note/Loader exports.
+
+See the ecosystem cockpit in [`constantin-jais/ecosystem/status.md`](https://github.com/constantin-jais/constantin-jais/blob/main/ecosystem/status.md).
+
 ## Purpose
 
 `gear-memory` is the persistent context substrate of the ecosystem. It provides code maps, repo memory, document/search primitives, and local-first context for agents and products.
