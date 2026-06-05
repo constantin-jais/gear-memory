@@ -41,6 +41,14 @@ Expected next evidence:
 
 Dogfooding claims should stay backed by visible commands, fixtures, CI workflows, generated reports, or linked docs.
 
+## Contributing
+
+See:
+
+- [CONTRIBUTING.md](CONTRIBUTING.md) for contribution guidelines;
+- [ROADMAP.md](ROADMAP.md) for current contribution priorities;
+- [issue templates](.github/ISSUE_TEMPLATE/) for bugs, docs issues, fixture/example requests, and design discussions.
+
 ## Forge role
 
 `gear-memory` is Gear infrastructure for trustworthy local context. It lets Rumble, Bolt, and Wrench share source references, memory entries, code maps, events, and provenance without each product inventing storage semantics.
