@@ -18,6 +18,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
+      - name: Secret pattern smoke
+        run: |
+          set -euo pipefail
+          if git grep -nEI '(AKIA[0-9A-Z]{16}|ghp_[A-Za-z0-9_]{20,}|github_pat_[A-Za-z0-9_]{20,}|-----BEGIN (RSA|DSA|EC|OPENSSH) PRIVATE KEY-----)' -- ':!package-lock.json' ':!Cargo.lock' ':!.github/workflows/security.yml'; then
+            echo "::error::potential secret pattern found"
+            exit 1
+          fi
       - uses: EmbarkStudios/cargo-deny-action@bb137d7af7e4fb67e5f82a49c4fce4fad40782fe # v2
         with:
           command: check
