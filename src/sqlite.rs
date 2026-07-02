@@ -7,6 +7,7 @@
 //! shape, and query surface are recorded in
 //! `docs/adr/0002-sqlite-code-index.md`.
 
+use std::collections::{BTreeMap, BTreeSet, HashSet};
 use std::path::Path;
 use std::sync::{Mutex, MutexGuard};
 
@@ -17,9 +18,50 @@ use time::OffsetDateTime;
 use time::format_description::well_known::Rfc3339;
 
 use crate::{
-    CodeMap, ContractValidationError, EventLogEntry, IndexState, MemoryEntry, ProvenanceRecord,
+    CodeEdge, CodeEdgeKind, CodeMap, CodeSymbol, CodeSymbolKind, ContractValidationError,
+    EventLogEntry, GearMemoryBundle, IndexState, MemoryEntry, ProvenanceRecord, SourceRange,
     SourceRef, SourceState, Store, StoreError,
 };
+
+/// serde tokens of every `CodeSymbolKind` variant — update alongside the
+/// contract enum (the unit test below catches renames and removals).
+const SYMBOL_KIND_TOKENS: [&str; 10] = [
+    "function",
+    "type",
+    "module",
+    "trait",
+    "interface",
+    "route",
+    "table",
+    "test",
+    "config",
+    "file",
+];
+
+/// serde tokens of every `CodeEdgeKind` variant — same maintenance rule.
+const EDGE_KIND_TOKENS: [&str; 11] = [
+    "defines",
+    "calls",
+    "imports",
+    "tests",
+    "configures",
+    "documents",
+    "generated_from",
+    "belongs_to",
+    "cites",
+    "derived_from",
+    "supersedes",
+];
+
+const ENTITY_TABLES: [&str; 7] = [
+    "source_refs",
+    "memory_entries",
+    "provenance_records",
+    "event_log_entries",
+    "code_maps",
+    "code_symbols",
+    "code_edges",
+];
 
 const SCHEMA_VERSION: i64 = 1;
 
@@ -151,6 +193,14 @@ fn enum_token<T: Serialize>(value: &T) -> Result<String, StoreError> {
 
 fn to_json<T: Serialize>(value: &T) -> Result<String, StoreError> {
     serde_json::to_string(value).map_err(ser_err)
+}
+
+fn symbol_kind_from_token(token: &str) -> Result<CodeSymbolKind, StoreError> {
+    serde_json::from_value(serde_json::Value::String(token.to_string())).map_err(de_err)
+}
+
+fn edge_kind_from_token(token: &str) -> Result<CodeEdgeKind, StoreError> {
+    serde_json::from_value(serde_json::Value::String(token.to_string())).map_err(de_err)
 }
 
 fn from_json<T: DeserializeOwned>(json: &str) -> Result<T, StoreError> {
@@ -357,6 +407,289 @@ impl SqliteStore {
         self.conn
             .lock()
             .map_err(|_| StoreError::IoError("sqlite connection mutex poisoned".to_string()))
+    }
+
+    /// Ingest a validated bundle atomically, recording the ingestion
+    /// provenance in the same transaction.
+    pub fn ingest_bundle(
+        &self,
+        bundle: &GearMemoryBundle,
+        ingest_provenance: &ProvenanceRecord,
+    ) -> Result<IngestReport, StoreError> {
+        bundle.validate().map_err(validation_err)?;
+        ingest_provenance.validate().map_err(validation_err)?;
+
+        let mut guard = self.lock()?;
+        let tx = guard.transaction().map_err(sql_err)?;
+
+        for source in &bundle.source_refs {
+            insert_source_ref(&tx, source)?;
+        }
+        for entry in &bundle.memory_entries {
+            insert_memory_entry(&tx, entry)?;
+        }
+        for event in &bundle.event_log_entries {
+            insert_event_log_entry(&tx, event)?;
+        }
+        for record in &bundle.provenance_records {
+            insert_provenance_record(&tx, record)?;
+        }
+        let mut code_symbols = 0u64;
+        let mut code_edges = 0u64;
+        for code_map in &bundle.code_maps {
+            insert_code_map(&tx, code_map)?;
+            code_symbols += code_map.symbols.len() as u64;
+            code_edges += code_map.edges.len() as u64;
+        }
+        insert_provenance_record(&tx, ingest_provenance)?;
+        tx.commit().map_err(sql_err)?;
+
+        Ok(IngestReport {
+            source_refs: bundle.source_refs.len() as u64,
+            memory_entries: bundle.memory_entries.len() as u64,
+            provenance_records: bundle.provenance_records.len() as u64 + 1,
+            event_log_entries: bundle.event_log_entries.len() as u64,
+            code_maps: bundle.code_maps.len() as u64,
+            code_symbols,
+            code_edges,
+        })
+    }
+
+    /// Symbols whose name contains `name_contains` (plain substring — no
+    /// pattern metacharacters), optionally filtered by kind; deterministic
+    /// order (name, code_map_id, symbol_id). Returns (code_map_id, symbol).
+    pub fn symbol_search(
+        &self,
+        name_contains: &str,
+        kind: Option<&CodeSymbolKind>,
+    ) -> Result<Vec<(String, CodeSymbol)>, StoreError> {
+        let kind_token = kind.map(enum_token).transpose()?;
+        let conn = self.lock()?;
+        let mut stmt = conn
+            .prepare_cached(
+                "SELECT code_map_id, symbol_id, kind, name, source_ref, start_line, end_line, content_hash
+                 FROM code_symbols
+                 WHERE instr(name, ?1) > 0 AND (?2 IS NULL OR kind = ?2)
+                 ORDER BY name, code_map_id, symbol_id",
+            )
+            .map_err(sql_err)?;
+
+        let rows = stmt
+            .query_map(params![name_contains, kind_token], |row| {
+                Ok((
+                    row.get::<_, String>(0)?,
+                    row.get::<_, String>(1)?,
+                    row.get::<_, String>(2)?,
+                    row.get::<_, String>(3)?,
+                    row.get::<_, String>(4)?,
+                    row.get::<_, u32>(5)?,
+                    row.get::<_, u32>(6)?,
+                    row.get::<_, String>(7)?,
+                ))
+            })
+            .map_err(sql_err)?;
+
+        let mut hits = Vec::new();
+        for row in rows {
+            let (
+                code_map_id,
+                symbol_id,
+                token,
+                name,
+                source_ref,
+                start_line,
+                end_line,
+                content_hash,
+            ) = row.map_err(sql_err)?;
+            hits.push((
+                code_map_id,
+                CodeSymbol {
+                    symbol_id,
+                    kind: symbol_kind_from_token(&token)?,
+                    name,
+                    source_ref,
+                    range: SourceRange {
+                        start_line,
+                        end_line,
+                    },
+                    content_hash,
+                },
+            ));
+        }
+
+        Ok(hits)
+    }
+
+    /// Edges touching `symbol_id` in the given direction, optionally
+    /// filtered by kind; deterministic order (from, to, kind).
+    pub fn symbol_neighbors(
+        &self,
+        code_map_id: &str,
+        symbol_id: &str,
+        direction: EdgeDirection,
+        kind: Option<&CodeEdgeKind>,
+    ) -> Result<Vec<CodeEdge>, StoreError> {
+        let kind_token = kind.map(enum_token).transpose()?;
+        let sql = match direction {
+            EdgeDirection::Out => {
+                "SELECT from_symbol, to_symbol, kind FROM code_edges
+                 WHERE code_map_id = ?1 AND from_symbol = ?2 AND (?3 IS NULL OR kind = ?3)
+                 ORDER BY from_symbol, to_symbol, kind"
+            }
+            EdgeDirection::In => {
+                "SELECT from_symbol, to_symbol, kind FROM code_edges
+                 WHERE code_map_id = ?1 AND to_symbol = ?2 AND (?3 IS NULL OR kind = ?3)
+                 ORDER BY from_symbol, to_symbol, kind"
+            }
+            EdgeDirection::Both => {
+                "SELECT from_symbol, to_symbol, kind FROM code_edges
+                 WHERE code_map_id = ?1 AND (from_symbol = ?2 OR to_symbol = ?2)
+                   AND (?3 IS NULL OR kind = ?3)
+                 ORDER BY from_symbol, to_symbol, kind"
+            }
+        };
+
+        let conn = self.lock()?;
+        let mut stmt = conn.prepare_cached(sql).map_err(sql_err)?;
+        let rows = stmt
+            .query_map(params![code_map_id, symbol_id, kind_token], |row| {
+                Ok((
+                    row.get::<_, String>(0)?,
+                    row.get::<_, String>(1)?,
+                    row.get::<_, String>(2)?,
+                ))
+            })
+            .map_err(sql_err)?;
+
+        let mut edges = Vec::new();
+        for row in rows {
+            let (from, to, token) = row.map_err(sql_err)?;
+            edges.push(CodeEdge {
+                from,
+                to,
+                kind: edge_kind_from_token(&token)?,
+            });
+        }
+
+        Ok(edges)
+    }
+
+    /// Breadth-first traversal over outgoing edges, bounded by `max_depth`.
+    /// Deterministic: within a depth level, symbols are visited in
+    /// lexicographic order. The start symbol is hop 0.
+    pub fn trace_bfs(
+        &self,
+        code_map_id: &str,
+        start_symbol_id: &str,
+        max_depth: u32,
+    ) -> Result<Vec<TraceHop>, StoreError> {
+        let mut visited: HashSet<String> = HashSet::new();
+        visited.insert(start_symbol_id.to_string());
+
+        let mut hops = vec![TraceHop {
+            depth: 0,
+            symbol_id: start_symbol_id.to_string(),
+        }];
+        let mut frontier = vec![start_symbol_id.to_string()];
+
+        for depth in 1..=max_depth {
+            let mut next: BTreeSet<String> = BTreeSet::new();
+            for node in &frontier {
+                for edge in self.symbol_neighbors(code_map_id, node, EdgeDirection::Out, None)? {
+                    if !visited.contains(&edge.to) {
+                        next.insert(edge.to);
+                    }
+                }
+            }
+
+            if next.is_empty() {
+                break;
+            }
+
+            frontier = Vec::with_capacity(next.len());
+            for symbol_id in next {
+                visited.insert(symbol_id.clone());
+                hops.push(TraceHop {
+                    depth,
+                    symbol_id: symbol_id.clone(),
+                });
+                frontier.push(symbol_id);
+            }
+        }
+
+        Ok(hops)
+    }
+
+    /// Deterministic counts per entity table and per symbol/edge kind.
+    /// Zero counts are kept: a zero is a finding, not an omission.
+    pub fn stats(&self) -> Result<StoreStats, StoreError> {
+        let conn = self.lock()?;
+
+        let mut entities = BTreeMap::new();
+        for table in ENTITY_TABLES {
+            let count: i64 = conn
+                .query_row(&format!("SELECT COUNT(*) FROM {table}"), [], |row| {
+                    row.get(0)
+                })
+                .map_err(sql_err)?;
+            entities.insert(table.to_string(), count as u64);
+        }
+
+        let mut symbols_by_kind: BTreeMap<String, u64> = SYMBOL_KIND_TOKENS
+            .iter()
+            .map(|token| (token.to_string(), 0))
+            .collect();
+        let mut stmt = conn
+            .prepare_cached("SELECT kind, COUNT(*) FROM code_symbols GROUP BY kind")
+            .map_err(sql_err)?;
+        let rows = stmt
+            .query_map([], |row| {
+                Ok((row.get::<_, String>(0)?, row.get::<_, i64>(1)?))
+            })
+            .map_err(sql_err)?;
+        for row in rows {
+            let (kind, count) = row.map_err(sql_err)?;
+            symbols_by_kind.insert(kind, count as u64);
+        }
+
+        let mut edges_by_kind: BTreeMap<String, u64> = EDGE_KIND_TOKENS
+            .iter()
+            .map(|token| (token.to_string(), 0))
+            .collect();
+        let mut stmt = conn
+            .prepare_cached("SELECT kind, COUNT(*) FROM code_edges GROUP BY kind")
+            .map_err(sql_err)?;
+        let rows = stmt
+            .query_map([], |row| {
+                Ok((row.get::<_, String>(0)?, row.get::<_, i64>(1)?))
+            })
+            .map_err(sql_err)?;
+        for row in rows {
+            let (kind, count) = row.map_err(sql_err)?;
+            edges_by_kind.insert(kind, count as u64);
+        }
+
+        Ok(StoreStats {
+            schema_version: SCHEMA_VERSION,
+            entities,
+            symbols_by_kind,
+            edges_by_kind,
+        })
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn kind_token_tables_match_contract_enums() {
+        for token in SYMBOL_KIND_TOKENS {
+            symbol_kind_from_token(token).expect("symbol kind token parses");
+        }
+        for token in EDGE_KIND_TOKENS {
+            edge_kind_from_token(token).expect("edge kind token parses");
+        }
     }
 }
 
