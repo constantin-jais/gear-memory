@@ -30,5 +30,12 @@ jobs:
         run: cargo clippy --workspace --all-targets --all-features -- -D warnings
       - name: Test
         run: cargo test --workspace --all-features
+      - name: Fixture freshness
+        # The repo codemap fixture is dogfooding evidence: it must describe
+        # the sources as they are in this very commit, so regenerate and
+        # fail on any drift (review finding on PR #4).
+        run: |
+          cargo test --test fixture_generator -- --ignored
+          git diff --exit-code -- tests/fixtures/
       - name: Documentation
         run: cargo doc --workspace --all-features --no-deps
