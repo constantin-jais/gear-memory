@@ -14,6 +14,10 @@ use sha2::{Digest, Sha256};
 use time::OffsetDateTime;
 use time::format_description::well_known::Rfc3339;
 
+mod sqlite;
+
+pub use sqlite::{EdgeDirection, IngestReport, SqliteStore, StoreStats, TraceHop};
+
 /// Static project metadata used by the CLI and smoke tests.
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub struct ProjectCard {
@@ -647,6 +651,9 @@ pub trait Store {
     fn put_event_log_entry(&self, event: &EventLogEntry) -> Result<(), StoreError>;
     fn get_event_log_entry(&self, event_id: &str) -> Result<Option<EventLogEntry>, StoreError>;
 
+    fn put_code_map(&self, code_map: &CodeMap) -> Result<(), StoreError>;
+    fn get_code_map(&self, code_map_id: &str) -> Result<Option<CodeMap>, StoreError>;
+
     fn lookup_source_refs_by_id(&self, source_id: &str) -> Result<Vec<SourceRef>, StoreError>;
     fn lookup_source_refs_by_content_hash(
         &self,
@@ -672,8 +679,81 @@ pub trait Store {
     ) -> Result<Vec<MemoryEntry>, StoreError>;
     fn list_all_provenance_records(&self) -> Result<Vec<ProvenanceRecord>, StoreError>;
 
-    fn mark_deleted(&self, id: &str, reason: &str, timestamp: &str) -> Result<(), StoreError>;
-    fn mark_anonymized(&self, id: &str, reason: &str, timestamp: &str) -> Result<(), StoreError>;
+    /// RGPD erasure: flip the source to `Deleted` and leave an auditable
+    /// provenance + event trail. Backend-independent by construction.
+    fn mark_deleted(&self, id: &str, reason: &str, timestamp: &str) -> Result<(), StoreError> {
+        erase_source(self, id, reason, timestamp, SourceState::Deleted)
+    }
+
+    /// RGPD anonymization: same trail as `mark_deleted`, target state
+    /// `Anonymized`.
+    fn mark_anonymized(&self, id: &str, reason: &str, timestamp: &str) -> Result<(), StoreError> {
+        erase_source(self, id, reason, timestamp, SourceState::Anonymized)
+    }
+}
+
+fn erase_source<S: Store + ?Sized>(
+    store: &S,
+    id: &str,
+    reason: &str,
+    timestamp: &str,
+    target_state: SourceState,
+) -> Result<(), StoreError> {
+    OffsetDateTime::parse(timestamp, &Rfc3339)
+        .map_err(|e| StoreError::InvalidOperation(format!("invalid timestamp: {}", e)))?;
+
+    let mut source = store
+        .get_source_ref(id)?
+        .ok_or_else(|| StoreError::NotFound(format!("source {} not found", id)))?;
+
+    if source.state == target_state {
+        let state_label = match target_state {
+            SourceState::Deleted => "deleted",
+            SourceState::Anonymized => "anonymized",
+            _ => "in this state",
+        };
+        return Err(StoreError::InvalidOperation(format!(
+            "source {} is already {}",
+            id, state_label
+        )));
+    }
+
+    let (operation, event_type, prefix) = match target_state {
+        SourceState::Deleted => (ProvenanceOperation::Deleted, "source.deleted", "deleted"),
+        SourceState::Anonymized => (ProvenanceOperation::Anonymized, "source.anonymized", "anon"),
+        _ => {
+            return Err(StoreError::InvalidOperation(
+                "erasure only targets Deleted or Anonymized".to_string(),
+            ));
+        }
+    };
+
+    source.state = target_state;
+    store.put_source_ref(&source)?;
+
+    let provenance_id = format!("prov_{}_{}", prefix, id);
+    let record = ProvenanceRecord {
+        provenance_id: provenance_id.clone(),
+        actor_ref: "system".to_string(),
+        operation,
+        inputs: vec![id.to_string()],
+        outputs: vec![id.to_string()],
+        tool_ref: None,
+        timestamp: timestamp.to_string(),
+        metadata: SafeMetadata::from_pairs([("reason".to_string(), reason.to_string())]),
+    };
+    store.put_provenance_record(&record)?;
+
+    let event = EventLogEntry {
+        event_id: format!("evt_{}_{}", prefix, id),
+        event_type: event_type.to_string(),
+        actor_ref: "system".to_string(),
+        target_ref: id.to_string(),
+        provenance_id,
+        metadata: SafeMetadata::from_pairs([("reason".to_string(), reason.to_string())]),
+        created_at: timestamp.to_string(),
+    };
+    store.put_event_log_entry(&event)
 }
 
 /// File-backed store implementation for Stage 0.
@@ -697,6 +777,9 @@ impl FileStore {
         fs::create_dir_all(root.join("provenance_records"))
             .map_err(|e| StoreError::IoError(e.to_string()))?;
         fs::create_dir_all(root.join("event_log_entries"))
+            .map_err(|e| StoreError::IoError(e.to_string()))?;
+
+        fs::create_dir_all(root.join("code_maps"))
             .map_err(|e| StoreError::IoError(e.to_string()))?;
 
         Ok(Self {
@@ -726,6 +809,12 @@ impl FileStore {
         self.root
             .join("event_log_entries")
             .join(format!("{}.json", event_id))
+    }
+
+    fn code_map_path(&self, code_map_id: &str) -> PathBuf {
+        self.root
+            .join("code_maps")
+            .join(format!("{}.json", code_map_id))
     }
 
     fn list_json_files(&self, dir: &Path) -> Result<Vec<PathBuf>, StoreError> {
@@ -824,6 +913,18 @@ impl Store for FileStore {
 
     fn get_event_log_entry(&self, event_id: &str) -> Result<Option<EventLogEntry>, StoreError> {
         self.read_json_file(&self.event_log_entry_path(event_id))
+    }
+
+    fn put_code_map(&self, code_map: &CodeMap) -> Result<(), StoreError> {
+        code_map
+            .validate()
+            .map_err(|e| StoreError::InvalidOperation(e.to_string()))?;
+
+        self.write_json_file(&self.code_map_path(&code_map.code_map_id), code_map)
+    }
+
+    fn get_code_map(&self, code_map_id: &str) -> Result<Option<CodeMap>, StoreError> {
+        self.read_json_file(&self.code_map_path(code_map_id))
     }
 
     fn lookup_source_refs_by_id(&self, source_id: &str) -> Result<Vec<SourceRef>, StoreError> {
@@ -946,110 +1047,6 @@ impl Store for FileStore {
         }
 
         Ok(results)
-    }
-
-    fn mark_deleted(&self, id: &str, reason: &str, timestamp: &str) -> Result<(), StoreError> {
-        // Validate timestamp
-        OffsetDateTime::parse(timestamp, &Rfc3339)
-            .map_err(|e| StoreError::InvalidOperation(format!("invalid timestamp: {}", e)))?;
-
-        // Get the current source ref
-        let mut source = self
-            .get_source_ref(id)?
-            .ok_or_else(|| StoreError::NotFound(format!("source {} not found", id)))?;
-
-        // Check if already deleted
-        if source.state == SourceState::Deleted {
-            return Err(StoreError::InvalidOperation(format!(
-                "source {} is already deleted",
-                id
-            )));
-        }
-
-        // Update state
-        source.state = SourceState::Deleted;
-        self.put_source_ref(&source)?;
-
-        // Create provenance record for deletion
-        let provenance_id = format!("prov_deleted_{}", id);
-        let deletion_record = ProvenanceRecord {
-            provenance_id: provenance_id.clone(),
-            actor_ref: "system".to_string(),
-            operation: ProvenanceOperation::Deleted,
-            inputs: vec![id.to_string()],
-            outputs: vec![id.to_string()],
-            tool_ref: None,
-            timestamp: timestamp.to_string(),
-            metadata: SafeMetadata::from_pairs([("reason".to_string(), reason.to_string())]),
-        };
-
-        self.put_provenance_record(&deletion_record)?;
-
-        // Create event log entry
-        let event_id = format!("evt_deleted_{}", id);
-        let event = EventLogEntry {
-            event_id,
-            event_type: "source.deleted".to_string(),
-            actor_ref: "system".to_string(),
-            target_ref: id.to_string(),
-            provenance_id,
-            metadata: SafeMetadata::from_pairs([("reason".to_string(), reason.to_string())]),
-            created_at: timestamp.to_string(),
-        };
-
-        self.put_event_log_entry(&event)
-    }
-
-    fn mark_anonymized(&self, id: &str, reason: &str, timestamp: &str) -> Result<(), StoreError> {
-        // Validate timestamp
-        OffsetDateTime::parse(timestamp, &Rfc3339)
-            .map_err(|e| StoreError::InvalidOperation(format!("invalid timestamp: {}", e)))?;
-
-        // Get the current source ref
-        let mut source = self
-            .get_source_ref(id)?
-            .ok_or_else(|| StoreError::NotFound(format!("source {} not found", id)))?;
-
-        // Check if already anonymized
-        if source.state == SourceState::Anonymized {
-            return Err(StoreError::InvalidOperation(format!(
-                "source {} is already anonymized",
-                id
-            )));
-        }
-
-        // Update state
-        source.state = SourceState::Anonymized;
-        self.put_source_ref(&source)?;
-
-        // Create provenance record for anonymization
-        let provenance_id = format!("prov_anon_{}", id);
-        let anon_record = ProvenanceRecord {
-            provenance_id: provenance_id.clone(),
-            actor_ref: "system".to_string(),
-            operation: ProvenanceOperation::Anonymized,
-            inputs: vec![id.to_string()],
-            outputs: vec![id.to_string()],
-            tool_ref: None,
-            timestamp: timestamp.to_string(),
-            metadata: SafeMetadata::from_pairs([("reason".to_string(), reason.to_string())]),
-        };
-
-        self.put_provenance_record(&anon_record)?;
-
-        // Create event log entry
-        let event_id = format!("evt_anon_{}", id);
-        let event = EventLogEntry {
-            event_id,
-            event_type: "source.anonymized".to_string(),
-            actor_ref: "system".to_string(),
-            target_ref: id.to_string(),
-            provenance_id,
-            metadata: SafeMetadata::from_pairs([("reason".to_string(), reason.to_string())]),
-            created_at: timestamp.to_string(),
-        };
-
-        self.put_event_log_entry(&event)
     }
 }
 

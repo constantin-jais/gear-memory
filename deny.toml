@@ -1,5 +1,7 @@
 [licenses]
-allow = ["MIT", "Apache-2.0", "Unicode-3.0"]
+# Zlib: permissive (OSI/FSF), pulled in by rusqlite -> hashlink ->
+# hashbrown -> foldhash. Accepted in ADR-0002.
+allow = ["MIT", "Apache-2.0", "Unicode-3.0", "Zlib"]
 confidence-threshold = 0.9
 
 [advisories]

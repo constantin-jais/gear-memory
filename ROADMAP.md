@@ -12,13 +12,23 @@ This is a contribution map, not a startup roadmap or a delivery promise. It show
 
 ## Next
 
-- add example exports and code-map outputs;
 - improve error messages around invalid references;
-- add contract tests for local persistence and indexing;
-- prepare the first alpha-quality memory substrate.
+- bundle export/import commands (artifact custody stays `gear-depot`);
+- full-text rung (FTS5) inside the same SQLite engine;
+- integrate explicit Note/Loader exports.
+
+## Done in P1 (2026-07-02)
+
+- contract tests for local persistence and indexing (shared suite,
+  `FileStore` + `SqliteStore`);
+- first alpha-quality memory substrate: SQLite code index with
+  deterministic graph queries, CLI envelopes, and dogfooding evidence
+  (`docs/dogfooding.md`, ADR-0002).
 
 ## Later
 
 - broader local integrations;
 - provenance for shared memory artifacts;
+- contracts v0.2 when a real producer emits new shapes (see the
+  ecosystem decision log, 2026-07-02);
 - multi-user memory only when privacy and tenancy boundaries are explicit.

@@ -1,6 +1,10 @@
 # ADR-0001 — Scope and upstream policy
 
-- Status: Accepted
+- Status: Accepted — **amended 2026-07-02 by ADR-0002**: the
+  upstream-tracking policy below is superseded; `basemind` is a knowledge
+  reference, not a tracked upstream (the crate is hand-written
+  contract-first). Sovereignty, licensing, and CI gates remain in force.
+  The "Presto-Matic" wording predates the current ecosystem naming.
 - Date: 2026-06-29
 - Upstream: [basemind](https://github.com/Goldziher/basemind)
 
