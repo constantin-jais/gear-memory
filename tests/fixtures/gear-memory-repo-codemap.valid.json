@@ -28,7 +28,7 @@
       "source_type": "file",
       "origin_product": "gear-memory:fixture-generator",
       "uri": "file://src/sqlite.rs",
-      "content_hash": "sha256:6a9ecc8d2ef30047613d3e6252c20baac335f36341d31e0bdb785a033d7262fe",
+      "content_hash": "sha256:cce7222bcb0df9b0b9319b09ec732e9868d45759b31614127cd95cd0d0a557ac",
       "provenance_id": "prov_fixture_generation",
       "state": "active",
       "created_at": "2026-07-02T00:00:00Z",
@@ -1139,7 +1139,7 @@
             "start_line": 130,
             "end_line": 137
           },
-          "content_hash": "sha256:052d8cfbac5a7b2dd3479014f72182b2aa6caf811c5c0106c9185e818bfa0d59"
+          "content_hash": "sha256:fb55b8dbf285725aac65505cba482e8bafd32cd954a8de69e42cddea683e83f9"
         },
         {
           "symbol_id": "sym_gear_memory__sqlite__IngestReport",
@@ -1150,7 +1150,7 @@
             "start_line": 156,
             "end_line": 166
           },
-          "content_hash": "sha256:1ae683cbbaaa76888f3ce5e3388624aeb27a0573da9efad005050903039e9eda"
+          "content_hash": "sha256:5bf760b7e7e189f8bed67e120637a56c62547c251a7e3fe2ba72596d13260a8a"
         },
         {
           "symbol_id": "sym_gear_memory__sqlite__SqliteStore",
@@ -1161,7 +1161,7 @@
             "start_line": 123,
             "end_line": 128
           },
-          "content_hash": "sha256:f8d7888964b5998e4287232bdab8a1a32c56fe41ba35b85b82d80c02e2f7fbc0"
+          "content_hash": "sha256:3fdca45a61a695bea4ec38d8935aee5ae16774d3fe2313fccc3e74e54dde3a9e"
         },
         {
           "symbol_id": "sym_gear_memory__sqlite__SqliteStore__get_code_map",
@@ -1169,10 +1169,10 @@
           "name": "gear_memory::sqlite::SqliteStore::get_code_map",
           "source_ref": "src_src_sqlite_rs",
           "range": {
-            "start_line": 763,
-            "end_line": 770
+            "start_line": 748,
+            "end_line": 755
           },
-          "content_hash": "sha256:7d15bcd2671bfd2ec604a02442e77ae29950ef8bd77334bae053ce3dd2df18ec"
+          "content_hash": "sha256:9b72db50fd19d622a7762e8a9ae20b201eb37734ae6f0dd70545eb031b0d328b"
         },
         {
           "symbol_id": "sym_gear_memory__sqlite__SqliteStore__get_event_log_entry",
@@ -1180,10 +1180,10 @@
           "name": "gear_memory::sqlite::SqliteStore::get_event_log_entry",
           "source_ref": "src_src_sqlite_rs",
           "range": {
-            "start_line": 747,
-            "end_line": 754
+            "start_line": 732,
+            "end_line": 739
           },
-          "content_hash": "sha256:c16cc6aa1c8611bd055b498cba27ac1b56fa50b51d86e3f9a7654e24a144a5ea"
+          "content_hash": "sha256:68aee19d39ea29010f00d39fd9c6aad226f3a9b5d3edd7a68e94174dacaaef9f"
         },
         {
           "symbol_id": "sym_gear_memory__sqlite__SqliteStore__get_memory_entry",
@@ -1191,10 +1191,10 @@
           "name": "gear_memory::sqlite::SqliteStore::get_memory_entry",
           "source_ref": "src_src_sqlite_rs",
           "range": {
-            "start_line": 716,
-            "end_line": 723
+            "start_line": 701,
+            "end_line": 708
           },
-          "content_hash": "sha256:39a4f94fe05023510ea7d92798fa16a025a3101ae3312286308635e3983fed67"
+          "content_hash": "sha256:5d1e3104b057e68279f4c083e2ba905672219193997c6620f7a673298f847dcc"
         },
         {
           "symbol_id": "sym_gear_memory__sqlite__SqliteStore__get_provenance_record",
@@ -1202,10 +1202,10 @@
           "name": "gear_memory::sqlite::SqliteStore::get_provenance_record",
           "source_ref": "src_src_sqlite_rs",
           "range": {
-            "start_line": 730,
-            "end_line": 740
+            "start_line": 715,
+            "end_line": 725
           },
-          "content_hash": "sha256:0ff7ab97311b47a57546ce9aa619faa74b2307a73a71b2f8160897faf15cb9e4"
+          "content_hash": "sha256:d945726bcfcbc3d9c4e97a0c7a778eb93b157cef10d67fd5a5ece0e08c2e535b"
         },
         {
           "symbol_id": "sym_gear_memory__sqlite__SqliteStore__get_source_ref",
@@ -1213,10 +1213,10 @@
           "name": "gear_memory::sqlite::SqliteStore::get_source_ref",
           "source_ref": "src_src_sqlite_rs",
           "range": {
-            "start_line": 702,
-            "end_line": 709
+            "start_line": 687,
+            "end_line": 694
           },
-          "content_hash": "sha256:3754580ed5010bbbbb0972e852ac92023f2dcb9f7ec64fbf273018eee4cf150d"
+          "content_hash": "sha256:02d7009d4bb9467b80482db7a7b63a4f99c07c3bf43ba52aecc3972d97c45c16"
         },
         {
           "symbol_id": "sym_gear_memory__sqlite__SqliteStore__ingest_bundle",
@@ -1227,7 +1227,7 @@
             "start_line": 412,
             "end_line": 456
           },
-          "content_hash": "sha256:abb7039ed5cd9c995bb85d2cf9301472319d5a14a59dda1b4e9e8cb80b2e6d47"
+          "content_hash": "sha256:cec0afc948115e98da985d3e883922b0d8ca09898010b15a69ba1b1ca486e8d3"
         },
         {
           "symbol_id": "sym_gear_memory__sqlite__SqliteStore__list_all_provenance_records",
@@ -1235,10 +1235,10 @@
           "name": "gear_memory::sqlite::SqliteStore::list_all_provenance_records",
           "source_ref": "src_src_sqlite_rs",
           "range": {
-            "start_line": 859,
-            "end_line": 866
+            "start_line": 844,
+            "end_line": 851
           },
-          "content_hash": "sha256:d6649e406088d044f515569d81aa130714e75f9bb409ad36332a2592d203ba0a"
+          "content_hash": "sha256:9dd7ff69b6cea465f219ea34943e90307518cb405af6998872a24ec0c07acb1a"
         },
         {
           "symbol_id": "sym_gear_memory__sqlite__SqliteStore__lock",
@@ -1249,7 +1249,7 @@
             "start_line": 406,
             "end_line": 410
           },
-          "content_hash": "sha256:953acadc209368a6eb25b562b01ef853f1c90bb458686c6795285d40018f3573"
+          "content_hash": "sha256:ec8ef8bf1ce5e6eb67e9c90ddef2ab9feb2eb7a954f748253da0d1b4c9e616da"
         },
         {
           "symbol_id": "sym_gear_memory__sqlite__SqliteStore__lookup_memory_entries_by_state",
@@ -1257,10 +1257,10 @@
           "name": "gear_memory::sqlite::SqliteStore::lookup_memory_entries_by_state",
           "source_ref": "src_src_sqlite_rs",
           "range": {
-            "start_line": 846,
-            "end_line": 857
+            "start_line": 831,
+            "end_line": 842
           },
-          "content_hash": "sha256:700dcc7c04dfa894510d52ee6e852c70f80a944f0c6c96f024c3dc858ce78f10"
+          "content_hash": "sha256:1a8005b61c96bd9d350b8d51f4a2444a63846b5b293890f058e942186329bbbf"
         },
         {
           "symbol_id": "sym_gear_memory__sqlite__SqliteStore__lookup_source_refs_by_content_hash",
@@ -1268,10 +1268,10 @@
           "name": "gear_memory::sqlite::SqliteStore::lookup_source_refs_by_content_hash",
           "source_ref": "src_src_sqlite_rs",
           "range": {
-            "start_line": 779,
-            "end_line": 789
+            "start_line": 764,
+            "end_line": 774
           },
-          "content_hash": "sha256:29ea6d1ce86e9ebebe359d8e277fe94ca7636b096880099d6f6012b7449fd9c0"
+          "content_hash": "sha256:31a0e2a564dc7717c48ee1f3a6959d0723e6711b0a742dc45dd342217fadf1b4"
         },
         {
           "symbol_id": "sym_gear_memory__sqlite__SqliteStore__lookup_source_refs_by_id",
@@ -1279,10 +1279,10 @@
           "name": "gear_memory::sqlite::SqliteStore::lookup_source_refs_by_id",
           "source_ref": "src_src_sqlite_rs",
           "range": {
-            "start_line": 772,
-            "end_line": 777
+            "start_line": 757,
+            "end_line": 762
           },
-          "content_hash": "sha256:aeca595a3d3f39da5be2b432e674d142826082e9c015572841d98a9facd4cadd"
+          "content_hash": "sha256:29d3faca9b4608f466cdc5cf8a637f334935cafdd66a315013b18f1062e02516"
         },
         {
           "symbol_id": "sym_gear_memory__sqlite__SqliteStore__lookup_source_refs_by_origin_product",
@@ -1290,10 +1290,10 @@
           "name": "gear_memory::sqlite::SqliteStore::lookup_source_refs_by_origin_product",
           "source_ref": "src_src_sqlite_rs",
           "range": {
-            "start_line": 791,
-            "end_line": 801
+            "start_line": 776,
+            "end_line": 786
           },
-          "content_hash": "sha256:f92384e6a138e5aeb552a01485ac20badabc8b6f52f8cf108cca3783bd4d2fe0"
+          "content_hash": "sha256:8493e7f03774307988417bb78ea2320718e625ac62d04b1619944405f22914c7"
         },
         {
           "symbol_id": "sym_gear_memory__sqlite__SqliteStore__lookup_source_refs_by_state",
@@ -1301,10 +1301,10 @@
           "name": "gear_memory::sqlite::SqliteStore::lookup_source_refs_by_state",
           "source_ref": "src_src_sqlite_rs",
           "range": {
-            "start_line": 803,
-            "end_line": 814
+            "start_line": 788,
+            "end_line": 799
           },
-          "content_hash": "sha256:01f93e6f1388229ce93cd08a1732b4e8d8b12ea37f32c9e0cf2c8a4e885750d5"
+          "content_hash": "sha256:af9136c42ec893185e28d35f08e1b987429da5f39efff0a16eeb7ee952b6d2bc"
         },
         {
           "symbol_id": "sym_gear_memory__sqlite__SqliteStore__lookup_source_refs_by_timestamp_range",
@@ -1312,10 +1312,10 @@
           "name": "gear_memory::sqlite::SqliteStore::lookup_source_refs_by_timestamp_range",
           "source_ref": "src_src_sqlite_rs",
           "range": {
-            "start_line": 816,
-            "end_line": 844
+            "start_line": 801,
+            "end_line": 829
           },
-          "content_hash": "sha256:e6f73502751a83fe366261b3a238e4212247a63efff01631535e2a74f4394424"
+          "content_hash": "sha256:034456b013470a9148cf2b901104b2a5580978f5c9edecbe774af25498f6ccd9"
         },
         {
           "symbol_id": "sym_gear_memory__sqlite__SqliteStore__new",
@@ -1326,7 +1326,7 @@
             "start_line": 370,
             "end_line": 404
           },
-          "content_hash": "sha256:2a35d1ab2bfd686438d79f723e2ae2787cd09fa3da6f505cb474023ed59b1d52"
+          "content_hash": "sha256:a9a39895cd5a4def0adac77c9b98e0e2b9357025879c1510ffa53c30376cc55d"
         },
         {
           "symbol_id": "sym_gear_memory__sqlite__SqliteStore__put_code_map",
@@ -1334,10 +1334,10 @@
           "name": "gear_memory::sqlite::SqliteStore::put_code_map",
           "source_ref": "src_src_sqlite_rs",
           "range": {
-            "start_line": 756,
-            "end_line": 761
+            "start_line": 741,
+            "end_line": 746
           },
-          "content_hash": "sha256:b3aae8cacae107276facf7a9ea2a26a08b071fe3b4de13fca6bcc4ad8411ed35"
+          "content_hash": "sha256:cdd5bf9cba59921f31630cf0a02e60599321361d28e882a8881e11d32eac8871"
         },
         {
           "symbol_id": "sym_gear_memory__sqlite__SqliteStore__put_event_log_entry",
@@ -1345,10 +1345,10 @@
           "name": "gear_memory::sqlite::SqliteStore::put_event_log_entry",
           "source_ref": "src_src_sqlite_rs",
           "range": {
-            "start_line": 742,
-            "end_line": 745
+            "start_line": 727,
+            "end_line": 730
           },
-          "content_hash": "sha256:52a644005c736804194db3ab2e5c978b1a01be4748e10daaaaa2f02a55a92cb1"
+          "content_hash": "sha256:e7c9e71a6ebe7d93c535032747104141044a3c3547e1ef37a5c5197d42729e3c"
         },
         {
           "symbol_id": "sym_gear_memory__sqlite__SqliteStore__put_memory_entry",
@@ -1356,10 +1356,10 @@
           "name": "gear_memory::sqlite::SqliteStore::put_memory_entry",
           "source_ref": "src_src_sqlite_rs",
           "range": {
-            "start_line": 711,
-            "end_line": 714
+            "start_line": 696,
+            "end_line": 699
           },
-          "content_hash": "sha256:cc7726224d7b1df7428026b95fdaa3381ebf85c0e98c91023417dfca1d1d511a"
+          "content_hash": "sha256:f19c02e0a3bedc235412cbef7b86049af406e262cc9e2d19962b813342eba892"
         },
         {
           "symbol_id": "sym_gear_memory__sqlite__SqliteStore__put_provenance_record",
@@ -1367,10 +1367,10 @@
           "name": "gear_memory::sqlite::SqliteStore::put_provenance_record",
           "source_ref": "src_src_sqlite_rs",
           "range": {
-            "start_line": 725,
-            "end_line": 728
+            "start_line": 710,
+            "end_line": 713
           },
-          "content_hash": "sha256:182b9ec1773ce41865bda47422450fdf0d30f1f082b94435b68fe6e946feb8f5"
+          "content_hash": "sha256:7f46befb1b7816c980e34af8de8d7afe3f91ee9ea28e8f55e79d09323b32433c"
         },
         {
           "symbol_id": "sym_gear_memory__sqlite__SqliteStore__put_source_ref",
@@ -1378,10 +1378,10 @@
           "name": "gear_memory::sqlite::SqliteStore::put_source_ref",
           "source_ref": "src_src_sqlite_rs",
           "range": {
-            "start_line": 697,
-            "end_line": 700
+            "start_line": 682,
+            "end_line": 685
           },
-          "content_hash": "sha256:2c292f52c594008b11ccfa8e2770837049d08c6e8d5efb9abb0c0aa7ad11f18b"
+          "content_hash": "sha256:ffefb13da4e45deb496c1040c878aaaff5d1415a509bfe10ae845e6a63e4cd9e"
         },
         {
           "symbol_id": "sym_gear_memory__sqlite__SqliteStore__stats",
@@ -1392,7 +1392,7 @@
             "start_line": 623,
             "end_line": 678
           },
-          "content_hash": "sha256:a4065b86051b449f318138ff22e7a4b3870496eb9802eec30a942f892c8484ac"
+          "content_hash": "sha256:e79e2f5486054a996d9feb88ed2acba30d8650f13030906203c02c908d293bd7"
         },
         {
           "symbol_id": "sym_gear_memory__sqlite__SqliteStore__symbol_neighbors",
@@ -1403,7 +1403,7 @@
             "start_line": 523,
             "end_line": 575
           },
-          "content_hash": "sha256:ea6bd75f0f06b78b3a3e3eacbe057a3557223a7d94036cc0fe6ad756d173368f"
+          "content_hash": "sha256:7c0ef4c49c205ff48f11bd95e6ab429d5259ff76f3eb4e9af53bc0dc548c75fe"
         },
         {
           "symbol_id": "sym_gear_memory__sqlite__SqliteStore__symbol_search",
@@ -1414,7 +1414,7 @@
             "start_line": 458,
             "end_line": 521
           },
-          "content_hash": "sha256:5fdc78c4e5c4d29c0eed097b9351619f216c0f82f4c86be99b4011c37e1c6f04"
+          "content_hash": "sha256:cd0f14fb5dc90961da063776c6d6226350f102f935b86d4b2058baace00aca08"
         },
         {
           "symbol_id": "sym_gear_memory__sqlite__SqliteStore__trace_bfs",
@@ -1425,7 +1425,7 @@
             "start_line": 577,
             "end_line": 621
           },
-          "content_hash": "sha256:6964210724facaa4a1b95ca7f5a7f33b02bf456d3a85fda5eac3df6af2c37863"
+          "content_hash": "sha256:9244fa8ba3181205797614605fc22b00766211da91835e23536c9c372bfc4555"
         },
         {
           "symbol_id": "sym_gear_memory__sqlite__StoreStats",
@@ -1436,7 +1436,7 @@
             "start_line": 146,
             "end_line": 154
           },
-          "content_hash": "sha256:2b7b5cfb7a9b6cbbdf326b1a25afb7d6e5893a0eadb0b94b9aaa72a4bc0c642c"
+          "content_hash": "sha256:b7103d328f2eadbc8fd2c5f39b0c6c988dd2ce49b4370ffe8776ef391f54ca8b"
         },
         {
           "symbol_id": "sym_gear_memory__sqlite__TraceHop",
@@ -1447,7 +1447,7 @@
             "start_line": 139,
             "end_line": 144
           },
-          "content_hash": "sha256:26bd1f9ac30d6c650593b39ed3594004390ef9d6a3adc0cef4f9eebdb5e0d897"
+          "content_hash": "sha256:142818d5ce2c75ad704b16952d83c76e39560b623d2f860002eba122746bcf3d"
         },
         {
           "symbol_id": "sym_gear_memory__sqlite__collect_records",
@@ -1458,7 +1458,7 @@
             "start_line": 350,
             "end_line": 367
           },
-          "content_hash": "sha256:a343054cd22d2af8a30dc5ad48f687220b1e7618511cc1da4291ebdf63450de6"
+          "content_hash": "sha256:1d465d1e6a7f9a1d9e3453017d42e07d59f52aa66c6801c46e1c1366778733ed"
         },
         {
           "symbol_id": "sym_gear_memory__sqlite__de_err",
@@ -1469,7 +1469,7 @@
             "start_line": 176,
             "end_line": 178
           },
-          "content_hash": "sha256:dfdc9ea6515dd8c275170e45707f2c9af0740ad1b3f7c2bdcb393df320051a16"
+          "content_hash": "sha256:2c216031fa13dff82370a643311a47010d179c2a1afa44b606d743f9165aa780"
         },
         {
           "symbol_id": "sym_gear_memory__sqlite__edge_kind_from_token",
@@ -1480,7 +1480,7 @@
             "start_line": 202,
             "end_line": 204
           },
-          "content_hash": "sha256:e5ea2108b4134a31ce6634ed80b33ec6604747fa8b3864905e51510bcc01b68e"
+          "content_hash": "sha256:626738c472413999620aaab12a52c924e11c4d61ab4125a4f3a5fa2b20fb8b4d"
         },
         {
           "symbol_id": "sym_gear_memory__sqlite__enum_token",
@@ -1491,7 +1491,7 @@
             "start_line": 184,
             "end_line": 192
           },
-          "content_hash": "sha256:19ab6321d73a5ea9ae51af12fa15bc138eb6d6cb6353e1aebee98e4352d2cc6d"
+          "content_hash": "sha256:baf3e582ef3e83c48196d8123f943c86407c010be3aab9aca3b9787dae329e24"
         },
         {
           "symbol_id": "sym_gear_memory__sqlite__from_json",
@@ -1502,7 +1502,7 @@
             "start_line": 206,
             "end_line": 208
           },
-          "content_hash": "sha256:73c67e8e5a0d634c383dc77e24ff202bc44a3cf1fef7c4fa365d033f7f4312c3"
+          "content_hash": "sha256:243a7a1092d0a166dd17523e783e01e6191b9651d5e34d523c2f3faaf621b1bb"
         },
         {
           "symbol_id": "sym_gear_memory__sqlite__get_record_json",
@@ -1513,7 +1513,7 @@
             "start_line": 337,
             "end_line": 348
           },
-          "content_hash": "sha256:4514fa2f6fb24c9b981a1ad16eae7681cf837995691f65c26bb1b32f55b058ba"
+          "content_hash": "sha256:6d2079741a440570fa9dce7001c2e152be606312e678d6934669d30008c4c1c0"
         },
         {
           "symbol_id": "sym_gear_memory__sqlite__insert_code_map",
@@ -1524,7 +1524,7 @@
             "start_line": 275,
             "end_line": 335
           },
-          "content_hash": "sha256:1896ed100082304c6c8b7e15e2736fc80ebf3f318294eff76353dc9b572f08c6"
+          "content_hash": "sha256:f6816357e0feae67b6778a566dc55cc61eb7b399c4d7f98883b1bf0566ab18ea"
         },
         {
           "symbol_id": "sym_gear_memory__sqlite__insert_event_log_entry",
@@ -1535,7 +1535,7 @@
             "start_line": 263,
             "end_line": 273
           },
-          "content_hash": "sha256:cbdf0b6174913ba7ceb204f24153acee79c57f005f668a01103d1638925f8e51"
+          "content_hash": "sha256:b5d1ae776cb9339eb447755742af3fd17f05b102516e3704122ac0d0ed9c8c8f"
         },
         {
           "symbol_id": "sym_gear_memory__sqlite__insert_memory_entry",
@@ -1546,7 +1546,7 @@
             "start_line": 231,
             "end_line": 246
           },
-          "content_hash": "sha256:484d18fd7ca12c9395938d39d41198a210587a0f4dd5cf8be862650cd068f262"
+          "content_hash": "sha256:865d153a3d46ea9e0c788227aec84825bed57fe15b08019a586372e217d51c9a"
         },
         {
           "symbol_id": "sym_gear_memory__sqlite__insert_provenance_record",
@@ -1557,7 +1557,7 @@
             "start_line": 248,
             "end_line": 261
           },
-          "content_hash": "sha256:45293d162e11962c9fee6e56c11b31743078dceecef183258f9b1ff704e84656"
+          "content_hash": "sha256:d537986a837b65a2dc5511d4d3b10fd6eade303994bc22ce80ef742513bf0042"
         },
         {
           "symbol_id": "sym_gear_memory__sqlite__insert_source_ref",
@@ -1568,7 +1568,7 @@
             "start_line": 210,
             "end_line": 229
           },
-          "content_hash": "sha256:3ae8f6edb205210006abee787b459f9ab7d54bdd68979ecf1470f985ef5428f9"
+          "content_hash": "sha256:c6cf6bc3851eae33b87b0e610c2feff577ed72d13a5e3c61e16f47d0cace675c"
         },
         {
           "symbol_id": "sym_gear_memory__sqlite__ser_err",
@@ -1579,7 +1579,7 @@
             "start_line": 172,
             "end_line": 174
           },
-          "content_hash": "sha256:85654d094b4861d5534a4cf603850c32fa3a159b7435c2aa90a33a0abc928883"
+          "content_hash": "sha256:145d75a6c245999d79a9e5cfe3cc616294e96e6d55bf6f4d4624adf3c0b64e09"
         },
         {
           "symbol_id": "sym_gear_memory__sqlite__sql_err",
@@ -1590,7 +1590,7 @@
             "start_line": 168,
             "end_line": 170
           },
-          "content_hash": "sha256:af4c600a10b5d5cca047867327e344b17c14796abf4c41f7df767913fdc89b38"
+          "content_hash": "sha256:021f6ce024151bcb2c8f83b730c61086f24706ea65633fa82ac646cf20e9d453"
         },
         {
           "symbol_id": "sym_gear_memory__sqlite__symbol_kind_from_token",
@@ -1601,7 +1601,7 @@
             "start_line": 198,
             "end_line": 200
           },
-          "content_hash": "sha256:3339041c58e09a0ff091cfc1517296ff3bca31307d8cec73dc5efff719c5bb04"
+          "content_hash": "sha256:3e7a82d913355bb84898473fbca201fa8b668052856b9518434b6260c6224fd5"
         },
         {
           "symbol_id": "sym_gear_memory__sqlite__to_json",
@@ -1612,7 +1612,7 @@
             "start_line": 194,
             "end_line": 196
           },
-          "content_hash": "sha256:ee89edb4903fa986a22e22fa132b56109b275de59b472f7366a6f79360be65fc"
+          "content_hash": "sha256:8949b744e6f589f228019126badde93d7af77a25b64b731fad7bd902aa62aae8"
         },
         {
           "symbol_id": "sym_gear_memory__sqlite__validation_err",
@@ -1623,7 +1623,7 @@
             "start_line": 180,
             "end_line": 182
           },
-          "content_hash": "sha256:c48d7e118e4fecaa1d9331a5644b1551bb0624d439806f41333bd41b8deaebe8"
+          "content_hash": "sha256:45c70087dc698ef190d364a89a86fbd4fdbfe0b369fb7bf445d650a317442140"
         }
       ],
       "edges": [
