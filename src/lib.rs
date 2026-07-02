@@ -5,6 +5,8 @@
 
 use std::collections::BTreeMap;
 use std::fmt;
+use std::fs;
+use std::path::{Path, PathBuf};
 
 use serde::{Deserialize, Serialize};
 use serde_json::Value;
@@ -602,6 +604,453 @@ fn to_lower_hex(bytes: &[u8]) -> String {
     }
 
     output
+}
+
+/// Stage 0 store error type.
+#[derive(Debug, Clone, PartialEq, Eq)]
+pub enum StoreError {
+    IoError(String),
+    SerializationError(String),
+    DeserializationError(String),
+    NotFound(String),
+    InvalidOperation(String),
+}
+
+impl fmt::Display for StoreError {
+    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
+        match self {
+            Self::IoError(msg) => write!(f, "IO error: {}", msg),
+            Self::SerializationError(msg) => write!(f, "serialization error: {}", msg),
+            Self::DeserializationError(msg) => write!(f, "deserialization error: {}", msg),
+            Self::NotFound(msg) => write!(f, "not found: {}", msg),
+            Self::InvalidOperation(msg) => write!(f, "invalid operation: {}", msg),
+        }
+    }
+}
+
+impl std::error::Error for StoreError {}
+
+/// Stage 0 store trait for local persistence.
+pub trait Store {
+    fn put_source_ref(&self, source: &SourceRef) -> Result<(), StoreError>;
+    fn get_source_ref(&self, source_id: &str) -> Result<Option<SourceRef>, StoreError>;
+
+    fn put_memory_entry(&self, entry: &MemoryEntry) -> Result<(), StoreError>;
+    fn get_memory_entry(&self, memory_entry_id: &str) -> Result<Option<MemoryEntry>, StoreError>;
+
+    fn put_provenance_record(&self, record: &ProvenanceRecord) -> Result<(), StoreError>;
+    fn get_provenance_record(
+        &self,
+        provenance_id: &str,
+    ) -> Result<Option<ProvenanceRecord>, StoreError>;
+
+    fn put_event_log_entry(&self, event: &EventLogEntry) -> Result<(), StoreError>;
+    fn get_event_log_entry(&self, event_id: &str) -> Result<Option<EventLogEntry>, StoreError>;
+
+    fn lookup_source_refs_by_id(&self, source_id: &str) -> Result<Vec<SourceRef>, StoreError>;
+    fn lookup_source_refs_by_content_hash(
+        &self,
+        content_hash: &str,
+    ) -> Result<Vec<SourceRef>, StoreError>;
+    fn lookup_source_refs_by_origin_product(
+        &self,
+        origin_product: &str,
+    ) -> Result<Vec<SourceRef>, StoreError>;
+    fn lookup_source_refs_by_state(
+        &self,
+        state: &SourceState,
+    ) -> Result<Vec<SourceRef>, StoreError>;
+    fn lookup_source_refs_by_timestamp_range(
+        &self,
+        start: &str,
+        end: &str,
+    ) -> Result<Vec<SourceRef>, StoreError>;
+
+    fn lookup_memory_entries_by_state(
+        &self,
+        state: &IndexState,
+    ) -> Result<Vec<MemoryEntry>, StoreError>;
+    fn list_all_provenance_records(&self) -> Result<Vec<ProvenanceRecord>, StoreError>;
+
+    fn mark_deleted(&self, id: &str, reason: &str, timestamp: &str) -> Result<(), StoreError>;
+    fn mark_anonymized(&self, id: &str, reason: &str, timestamp: &str) -> Result<(), StoreError>;
+}
+
+/// File-backed store implementation for Stage 0.
+/// Format: JSON files per entity type in separate directories.
+/// Directory structure:
+///   {root}/
+///     sources/{source_id}.json
+///     memory_entries/{memory_entry_id}.json
+///     provenance_records/{provenance_id}.json
+///     event_log_entries/{event_id}.json
+pub struct FileStore {
+    root: PathBuf,
+}
+
+impl FileStore {
+    /// Create a new file-backed store at the given path.
+    pub fn new(root: &Path) -> Result<Self, StoreError> {
+        fs::create_dir_all(root.join("sources")).map_err(|e| StoreError::IoError(e.to_string()))?;
+        fs::create_dir_all(root.join("memory_entries"))
+            .map_err(|e| StoreError::IoError(e.to_string()))?;
+        fs::create_dir_all(root.join("provenance_records"))
+            .map_err(|e| StoreError::IoError(e.to_string()))?;
+        fs::create_dir_all(root.join("event_log_entries"))
+            .map_err(|e| StoreError::IoError(e.to_string()))?;
+
+        Ok(Self {
+            root: root.to_path_buf(),
+        })
+    }
+
+    fn source_path(&self, source_id: &str) -> PathBuf {
+        self.root
+            .join("sources")
+            .join(format!("{}.json", source_id))
+    }
+
+    fn memory_entry_path(&self, memory_entry_id: &str) -> PathBuf {
+        self.root
+            .join("memory_entries")
+            .join(format!("{}.json", memory_entry_id))
+    }
+
+    fn provenance_record_path(&self, provenance_id: &str) -> PathBuf {
+        self.root
+            .join("provenance_records")
+            .join(format!("{}.json", provenance_id))
+    }
+
+    fn event_log_entry_path(&self, event_id: &str) -> PathBuf {
+        self.root
+            .join("event_log_entries")
+            .join(format!("{}.json", event_id))
+    }
+
+    fn list_json_files(&self, dir: &Path) -> Result<Vec<PathBuf>, StoreError> {
+        let mut paths = Vec::new();
+
+        if !dir.exists() {
+            return Ok(paths);
+        }
+
+        for entry in fs::read_dir(dir).map_err(|e| StoreError::IoError(e.to_string()))? {
+            let entry = entry.map_err(|e| StoreError::IoError(e.to_string()))?;
+            let path = entry.path();
+
+            if path.is_file() && path.extension().map(|e| e == "json").unwrap_or(false) {
+                paths.push(path);
+            }
+        }
+
+        Ok(paths)
+    }
+
+    fn read_json_file<T: serde::de::DeserializeOwned>(
+        &self,
+        path: &Path,
+    ) -> Result<Option<T>, StoreError> {
+        if !path.exists() {
+            return Ok(None);
+        }
+
+        let content = fs::read_to_string(path).map_err(|e| StoreError::IoError(e.to_string()))?;
+        let value = serde_json::from_str(&content)
+            .map_err(|e| StoreError::DeserializationError(e.to_string()))?;
+
+        Ok(Some(value))
+    }
+
+    fn write_json_file<T: serde::Serialize>(
+        &self,
+        path: &Path,
+        value: &T,
+    ) -> Result<(), StoreError> {
+        let json = serde_json::to_string(value)
+            .map_err(|e| StoreError::SerializationError(e.to_string()))?;
+
+        fs::write(path, json).map_err(|e| StoreError::IoError(e.to_string()))
+    }
+}
+
+impl Store for FileStore {
+    fn put_source_ref(&self, source: &SourceRef) -> Result<(), StoreError> {
+        source
+            .validate()
+            .map_err(|e| StoreError::InvalidOperation(e.to_string()))?;
+
+        self.write_json_file(&self.source_path(&source.source_id), source)
+    }
+
+    fn get_source_ref(&self, source_id: &str) -> Result<Option<SourceRef>, StoreError> {
+        self.read_json_file(&self.source_path(source_id))
+    }
+
+    fn put_memory_entry(&self, entry: &MemoryEntry) -> Result<(), StoreError> {
+        entry
+            .validate()
+            .map_err(|e| StoreError::InvalidOperation(e.to_string()))?;
+
+        self.write_json_file(&self.memory_entry_path(&entry.memory_entry_id), entry)
+    }
+
+    fn get_memory_entry(&self, memory_entry_id: &str) -> Result<Option<MemoryEntry>, StoreError> {
+        self.read_json_file(&self.memory_entry_path(memory_entry_id))
+    }
+
+    fn put_provenance_record(&self, record: &ProvenanceRecord) -> Result<(), StoreError> {
+        record
+            .validate()
+            .map_err(|e| StoreError::InvalidOperation(e.to_string()))?;
+
+        self.write_json_file(&self.provenance_record_path(&record.provenance_id), record)
+    }
+
+    fn get_provenance_record(
+        &self,
+        provenance_id: &str,
+    ) -> Result<Option<ProvenanceRecord>, StoreError> {
+        self.read_json_file(&self.provenance_record_path(provenance_id))
+    }
+
+    fn put_event_log_entry(&self, event: &EventLogEntry) -> Result<(), StoreError> {
+        event
+            .validate()
+            .map_err(|e| StoreError::InvalidOperation(e.to_string()))?;
+
+        self.write_json_file(&self.event_log_entry_path(&event.event_id), event)
+    }
+
+    fn get_event_log_entry(&self, event_id: &str) -> Result<Option<EventLogEntry>, StoreError> {
+        self.read_json_file(&self.event_log_entry_path(event_id))
+    }
+
+    fn lookup_source_refs_by_id(&self, source_id: &str) -> Result<Vec<SourceRef>, StoreError> {
+        match self.get_source_ref(source_id)? {
+            Some(source) => Ok(vec![source]),
+            None => Ok(vec![]),
+        }
+    }
+
+    fn lookup_source_refs_by_content_hash(
+        &self,
+        content_hash: &str,
+    ) -> Result<Vec<SourceRef>, StoreError> {
+        let paths = self.list_json_files(&self.root.join("sources"))?;
+        let mut results = Vec::new();
+
+        for path in paths {
+            if let Some(source) = self
+                .read_json_file::<SourceRef>(&path)?
+                .filter(|s| s.content_hash == content_hash)
+            {
+                results.push(source);
+            }
+        }
+
+        Ok(results)
+    }
+
+    fn lookup_source_refs_by_origin_product(
+        &self,
+        origin_product: &str,
+    ) -> Result<Vec<SourceRef>, StoreError> {
+        let paths = self.list_json_files(&self.root.join("sources"))?;
+        let mut results = Vec::new();
+
+        for path in paths {
+            if let Some(source) = self
+                .read_json_file::<SourceRef>(&path)?
+                .filter(|s| s.origin_product == origin_product)
+            {
+                results.push(source);
+            }
+        }
+
+        Ok(results)
+    }
+
+    fn lookup_source_refs_by_state(
+        &self,
+        state: &SourceState,
+    ) -> Result<Vec<SourceRef>, StoreError> {
+        let paths = self.list_json_files(&self.root.join("sources"))?;
+        let mut results = Vec::new();
+
+        for path in paths {
+            if let Some(source) = self
+                .read_json_file::<SourceRef>(&path)?
+                .filter(|s| s.state == *state)
+            {
+                results.push(source);
+            }
+        }
+
+        Ok(results)
+    }
+
+    fn lookup_source_refs_by_timestamp_range(
+        &self,
+        start: &str,
+        end: &str,
+    ) -> Result<Vec<SourceRef>, StoreError> {
+        let start_time = OffsetDateTime::parse(start, &Rfc3339)
+            .map_err(|e| StoreError::InvalidOperation(format!("invalid start timestamp: {}", e)))?;
+        let end_time = OffsetDateTime::parse(end, &Rfc3339)
+            .map_err(|e| StoreError::InvalidOperation(format!("invalid end timestamp: {}", e)))?;
+
+        let paths = self.list_json_files(&self.root.join("sources"))?;
+        let mut results = Vec::new();
+
+        for path in paths {
+            if let Some(source) = self.read_json_file::<SourceRef>(&path)?
+                && let Ok(created) = OffsetDateTime::parse(&source.created_at, &Rfc3339)
+                && created >= start_time
+                && created <= end_time
+            {
+                results.push(source);
+            }
+        }
+
+        Ok(results)
+    }
+
+    fn lookup_memory_entries_by_state(
+        &self,
+        state: &IndexState,
+    ) -> Result<Vec<MemoryEntry>, StoreError> {
+        let paths = self.list_json_files(&self.root.join("memory_entries"))?;
+        let mut results = Vec::new();
+
+        for path in paths {
+            if let Some(entry) = self
+                .read_json_file::<MemoryEntry>(&path)?
+                .filter(|e| e.index_state == *state)
+            {
+                results.push(entry);
+            }
+        }
+
+        Ok(results)
+    }
+
+    fn list_all_provenance_records(&self) -> Result<Vec<ProvenanceRecord>, StoreError> {
+        let paths = self.list_json_files(&self.root.join("provenance_records"))?;
+        let mut results = Vec::new();
+
+        for path in paths {
+            if let Some(record) = self.read_json_file::<ProvenanceRecord>(&path)? {
+                results.push(record);
+            }
+        }
+
+        Ok(results)
+    }
+
+    fn mark_deleted(&self, id: &str, reason: &str, timestamp: &str) -> Result<(), StoreError> {
+        // Validate timestamp
+        OffsetDateTime::parse(timestamp, &Rfc3339)
+            .map_err(|e| StoreError::InvalidOperation(format!("invalid timestamp: {}", e)))?;
+
+        // Get the current source ref
+        let mut source = self
+            .get_source_ref(id)?
+            .ok_or_else(|| StoreError::NotFound(format!("source {} not found", id)))?;
+
+        // Check if already deleted
+        if source.state == SourceState::Deleted {
+            return Err(StoreError::InvalidOperation(format!(
+                "source {} is already deleted",
+                id
+            )));
+        }
+
+        // Update state
+        source.state = SourceState::Deleted;
+        self.put_source_ref(&source)?;
+
+        // Create provenance record for deletion
+        let provenance_id = format!("prov_deleted_{}", id);
+        let deletion_record = ProvenanceRecord {
+            provenance_id: provenance_id.clone(),
+            actor_ref: "system".to_string(),
+            operation: ProvenanceOperation::Deleted,
+            inputs: vec![id.to_string()],
+            outputs: vec![id.to_string()],
+            tool_ref: None,
+            timestamp: timestamp.to_string(),
+            metadata: SafeMetadata::from_pairs([("reason".to_string(), reason.to_string())]),
+        };
+
+        self.put_provenance_record(&deletion_record)?;
+
+        // Create event log entry
+        let event_id = format!("evt_deleted_{}", id);
+        let event = EventLogEntry {
+            event_id,
+            event_type: "source.deleted".to_string(),
+            actor_ref: "system".to_string(),
+            target_ref: id.to_string(),
+            provenance_id,
+            metadata: SafeMetadata::from_pairs([("reason".to_string(), reason.to_string())]),
+            created_at: timestamp.to_string(),
+        };
+
+        self.put_event_log_entry(&event)
+    }
+
+    fn mark_anonymized(&self, id: &str, reason: &str, timestamp: &str) -> Result<(), StoreError> {
+        // Validate timestamp
+        OffsetDateTime::parse(timestamp, &Rfc3339)
+            .map_err(|e| StoreError::InvalidOperation(format!("invalid timestamp: {}", e)))?;
+
+        // Get the current source ref
+        let mut source = self
+            .get_source_ref(id)?
+            .ok_or_else(|| StoreError::NotFound(format!("source {} not found", id)))?;
+
+        // Check if already anonymized
+        if source.state == SourceState::Anonymized {
+            return Err(StoreError::InvalidOperation(format!(
+                "source {} is already anonymized",
+                id
+            )));
+        }
+
+        // Update state
+        source.state = SourceState::Anonymized;
+        self.put_source_ref(&source)?;
+
+        // Create provenance record for anonymization
+        let provenance_id = format!("prov_anon_{}", id);
+        let anon_record = ProvenanceRecord {
+            provenance_id: provenance_id.clone(),
+            actor_ref: "system".to_string(),
+            operation: ProvenanceOperation::Anonymized,
+            inputs: vec![id.to_string()],
+            outputs: vec![id.to_string()],
+            tool_ref: None,
+            timestamp: timestamp.to_string(),
+            metadata: SafeMetadata::from_pairs([("reason".to_string(), reason.to_string())]),
+        };
+
+        self.put_provenance_record(&anon_record)?;
+
+        // Create event log entry
+        let event_id = format!("evt_anon_{}", id);
+        let event = EventLogEntry {
+            event_id,
+            event_type: "source.anonymized".to_string(),
+            actor_ref: "system".to_string(),
+            target_ref: id.to_string(),
+            provenance_id,
+            metadata: SafeMetadata::from_pairs([("reason".to_string(), reason.to_string())]),
+            created_at: timestamp.to_string(),
+        };
+
+        self.put_event_log_entry(&event)
+    }
 }
 
 #[cfg(test)]
