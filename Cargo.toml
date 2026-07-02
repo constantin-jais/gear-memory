@@ -15,4 +15,9 @@ sha2 = "0.10"
 time = { version = "0.3", features = ["parsing", "formatting"] }
 
 [dev-dependencies]
+# Dev-only fixture generator (decision log 2026-07-02): test-side tooling,
+# never shipped — the product keeps zero parsing capability.
+proc-macro2 = { version = "1", features = ["span-locations"] }
+sha2 = "0.10"
+syn = { version = "2", features = ["full", "visit"] }
 tempfile = "3"

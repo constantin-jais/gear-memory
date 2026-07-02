@@ -678,21 +678,6 @@ impl SqliteStore {
     }
 }
 
-#[cfg(test)]
-mod tests {
-    use super::*;
-
-    #[test]
-    fn kind_token_tables_match_contract_enums() {
-        for token in SYMBOL_KIND_TOKENS {
-            symbol_kind_from_token(token).expect("symbol kind token parses");
-        }
-        for token in EDGE_KIND_TOKENS {
-            edge_kind_from_token(token).expect("edge kind token parses");
-        }
-    }
-}
-
 impl Store for SqliteStore {
     fn put_source_ref(&self, source: &SourceRef) -> Result<(), StoreError> {
         let conn = self.lock()?;
@@ -863,5 +848,20 @@ impl Store for SqliteStore {
             "SELECT record_json FROM provenance_records ORDER BY provenance_id",
             &[],
         )
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn kind_token_tables_match_contract_enums() {
+        for token in SYMBOL_KIND_TOKENS {
+            symbol_kind_from_token(token).expect("symbol kind token parses");
+        }
+        for token in EDGE_KIND_TOKENS {
+            edge_kind_from_token(token).expect("edge kind token parses");
+        }
     }
 }

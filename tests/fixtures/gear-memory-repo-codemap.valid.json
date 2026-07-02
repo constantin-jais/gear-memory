@@ -1,0 +1,2578 @@
+{
+  "format": "gear.memory.v0.1",
+  "source_refs": [
+    {
+      "source_id": "src_src_lib_rs",
+      "source_type": "file",
+      "origin_product": "gear-memory:fixture-generator",
+      "uri": "file://src/lib.rs",
+      "content_hash": "sha256:69b9ac670afdd1c3ef59fb68d746dc348dbf19815a41cd19be172ea76faab983",
+      "provenance_id": "prov_fixture_generation",
+      "state": "active",
+      "created_at": "2026-07-02T00:00:00Z",
+      "metadata": {}
+    },
+    {
+      "source_id": "src_src_main_rs",
+      "source_type": "file",
+      "origin_product": "gear-memory:fixture-generator",
+      "uri": "file://src/main.rs",
+      "content_hash": "sha256:a71958476f1dd1b23b4439104ed13326a177cdd91f487bd9f53e5c4f938f4cb3",
+      "provenance_id": "prov_fixture_generation",
+      "state": "active",
+      "created_at": "2026-07-02T00:00:00Z",
+      "metadata": {}
+    },
+    {
+      "source_id": "src_src_sqlite_rs",
+      "source_type": "file",
+      "origin_product": "gear-memory:fixture-generator",
+      "uri": "file://src/sqlite.rs",
+      "content_hash": "sha256:6a9ecc8d2ef30047613d3e6252c20baac335f36341d31e0bdb785a033d7262fe",
+      "provenance_id": "prov_fixture_generation",
+      "state": "active",
+      "created_at": "2026-07-02T00:00:00Z",
+      "metadata": {}
+    }
+  ],
+  "memory_entries": [],
+  "event_log_entries": [],
+  "code_maps": [
+    {
+      "code_map_id": "cm_gear_memory_repo",
+      "root_source_ref": "src_src_lib_rs",
+      "scope": {
+        "repo_ref": "constantin-jais/gear-memory",
+        "revision": "git:p1-fixture",
+        "paths": [
+          "src/"
+        ]
+      },
+      "parser_refs": [
+        "syn:2:dev-only-fixture-generator"
+      ],
+      "symbols": [
+        {
+          "symbol_id": "sym_gear_memory__lib__CodeEdge",
+          "kind": "type",
+          "name": "gear_memory::lib::CodeEdge",
+          "source_ref": "src_src_lib_rs",
+          "range": {
+            "start_line": 324,
+            "end_line": 329
+          },
+          "content_hash": "sha256:221d46d8af026f2ce9a4667693990573fc1831488ea2e78bbafd085295feb2ee"
+        },
+        {
+          "symbol_id": "sym_gear_memory__lib__CodeEdge__validate",
+          "kind": "function",
+          "name": "gear_memory::lib::CodeEdge::validate",
+          "source_ref": "src_src_lib_rs",
+          "range": {
+            "start_line": 332,
+            "end_line": 335
+          },
+          "content_hash": "sha256:bcf631241ed59cd5654e229d440462d578385831953732483da1229f29b83501"
+        },
+        {
+          "symbol_id": "sym_gear_memory__lib__CodeEdgeKind",
+          "kind": "type",
+          "name": "gear_memory::lib::CodeEdgeKind",
+          "source_ref": "src_src_lib_rs",
+          "range": {
+            "start_line": 338,
+            "end_line": 352
+          },
+          "content_hash": "sha256:3f86cfe663e57c5cfd1d1f10a720fa812ff238ff2937ddf452f8410b661cd2f5"
+        },
+        {
+          "symbol_id": "sym_gear_memory__lib__CodeMap",
+          "kind": "type",
+          "name": "gear_memory::lib::CodeMap",
+          "source_ref": "src_src_lib_rs",
+          "range": {
+            "start_line": 214,
+            "end_line": 224
+          },
+          "content_hash": "sha256:e0215d2996d1656c7238004a0306915c3c719dcfcbb2db0682ebaf631e1b2a49"
+        },
+        {
+          "symbol_id": "sym_gear_memory__lib__CodeMap__validate",
+          "kind": "function",
+          "name": "gear_memory::lib::CodeMap::validate",
+          "source_ref": "src_src_lib_rs",
+          "range": {
+            "start_line": 227,
+            "end_line": 242
+          },
+          "content_hash": "sha256:f04a5e3c73c41a149685dded82a0939a4ebce275823d2fced528afd4c17e8e96"
+        },
+        {
+          "symbol_id": "sym_gear_memory__lib__CodeMapScope",
+          "kind": "type",
+          "name": "gear_memory::lib::CodeMapScope",
+          "source_ref": "src_src_lib_rs",
+          "range": {
+            "start_line": 245,
+            "end_line": 250
+          },
+          "content_hash": "sha256:29587ba49e786c6c8949bb6305bc106095cfdeb68952dc329fd537af6cae8ea4"
+        },
+        {
+          "symbol_id": "sym_gear_memory__lib__CodeMapScope__validate",
+          "kind": "function",
+          "name": "gear_memory::lib::CodeMapScope::validate",
+          "source_ref": "src_src_lib_rs",
+          "range": {
+            "start_line": 253,
+            "end_line": 260
+          },
+          "content_hash": "sha256:ad8a6bce63f2dd9c6519bb184ff46c89e2f1dc2f85126901241ce26e724697b6"
+        },
+        {
+          "symbol_id": "sym_gear_memory__lib__CodeMapState",
+          "kind": "type",
+          "name": "gear_memory::lib::CodeMapState",
+          "source_ref": "src_src_lib_rs",
+          "range": {
+            "start_line": 263,
+            "end_line": 269
+          },
+          "content_hash": "sha256:d5757b445d0f9f3ef11636b4a316b203681dcd20aabe7739fb1c336fcdd6ba1e"
+        },
+        {
+          "symbol_id": "sym_gear_memory__lib__CodeSymbol",
+          "kind": "type",
+          "name": "gear_memory::lib::CodeSymbol",
+          "source_ref": "src_src_lib_rs",
+          "range": {
+            "start_line": 271,
+            "end_line": 279
+          },
+          "content_hash": "sha256:be9aae12fad2c59e067232188c468c5eea39128af71d7fe72a8ffc958fd41525"
+        },
+        {
+          "symbol_id": "sym_gear_memory__lib__CodeSymbol__validate",
+          "kind": "function",
+          "name": "gear_memory::lib::CodeSymbol::validate",
+          "source_ref": "src_src_lib_rs",
+          "range": {
+            "start_line": 282,
+            "end_line": 288
+          },
+          "content_hash": "sha256:79d6fc1ac439396be7ce3b8ac45d5d3ec7ac8b529f439adc5a37172c35175c20"
+        },
+        {
+          "symbol_id": "sym_gear_memory__lib__CodeSymbolKind",
+          "kind": "type",
+          "name": "gear_memory::lib::CodeSymbolKind",
+          "source_ref": "src_src_lib_rs",
+          "range": {
+            "start_line": 291,
+            "end_line": 304
+          },
+          "content_hash": "sha256:6263b4f5c0234f82a247713b372319604ac9d4f4664b8aa7569af9b0a0fe81f9"
+        },
+        {
+          "symbol_id": "sym_gear_memory__lib__ContractValidationError",
+          "kind": "type",
+          "name": "gear_memory::lib::ContractValidationError",
+          "source_ref": "src_src_lib_rs",
+          "range": {
+            "start_line": 465,
+            "end_line": 474
+          },
+          "content_hash": "sha256:b06eb06fe126e3e53acdabed02e4ecd0698c634f95c315f2018dd74fa6565fc8"
+        },
+        {
+          "symbol_id": "sym_gear_memory__lib__ContractValidationError__fmt",
+          "kind": "function",
+          "name": "gear_memory::lib::ContractValidationError::fmt",
+          "source_ref": "src_src_lib_rs",
+          "range": {
+            "start_line": 477,
+            "end_line": 498
+          },
+          "content_hash": "sha256:94211e0ee7e6410bdfd32793463116caa40084eae1f466a4ac52eb9e9f25a2f1"
+        },
+        {
+          "symbol_id": "sym_gear_memory__lib__EventLogEntry",
+          "kind": "type",
+          "name": "gear_memory::lib::EventLogEntry",
+          "source_ref": "src_src_lib_rs",
+          "range": {
+            "start_line": 191,
+            "end_line": 200
+          },
+          "content_hash": "sha256:2ecdba4bb8dde3dc27658a1d49a3fe52d8f846fe00277c06a42557af00478aa3"
+        },
+        {
+          "symbol_id": "sym_gear_memory__lib__EventLogEntry__validate",
+          "kind": "function",
+          "name": "gear_memory::lib::EventLogEntry::validate",
+          "source_ref": "src_src_lib_rs",
+          "range": {
+            "start_line": 203,
+            "end_line": 211
+          },
+          "content_hash": "sha256:6f2db5e0c4899a3b0e957346a0aaafe135a03c882b7f530ddba75435a11a4c66"
+        },
+        {
+          "symbol_id": "sym_gear_memory__lib__FileStore",
+          "kind": "type",
+          "name": "gear_memory::lib::FileStore",
+          "source_ref": "src_src_lib_rs",
+          "range": {
+            "start_line": 759,
+            "end_line": 769
+          },
+          "content_hash": "sha256:6dc3a2b9c1e7d980e0305a4205267b92e44ec4d134a61432fbbd38c7be64648c"
+        },
+        {
+          "symbol_id": "sym_gear_memory__lib__FileStore__code_map_path",
+          "kind": "function",
+          "name": "gear_memory::lib::FileStore::code_map_path",
+          "source_ref": "src_src_lib_rs",
+          "range": {
+            "start_line": 814,
+            "end_line": 818
+          },
+          "content_hash": "sha256:005f2d07524df03f5d002c82f9743b7c83852b8beb3e71b161eecc2245cf608d"
+        },
+        {
+          "symbol_id": "sym_gear_memory__lib__FileStore__event_log_entry_path",
+          "kind": "function",
+          "name": "gear_memory::lib::FileStore::event_log_entry_path",
+          "source_ref": "src_src_lib_rs",
+          "range": {
+            "start_line": 808,
+            "end_line": 812
+          },
+          "content_hash": "sha256:b5b7b69ca1d0b384c59117e5e738a115432f6b0ae4c3441d5326c347d1fa6368"
+        },
+        {
+          "symbol_id": "sym_gear_memory__lib__FileStore__get_code_map",
+          "kind": "function",
+          "name": "gear_memory::lib::FileStore::get_code_map",
+          "source_ref": "src_src_lib_rs",
+          "range": {
+            "start_line": 926,
+            "end_line": 928
+          },
+          "content_hash": "sha256:4936f4632d03ff97695252ce40aded944c6e6ae1878642d3b5b2d8a4c7e99ff4"
+        },
+        {
+          "symbol_id": "sym_gear_memory__lib__FileStore__get_event_log_entry",
+          "kind": "function",
+          "name": "gear_memory::lib::FileStore::get_event_log_entry",
+          "source_ref": "src_src_lib_rs",
+          "range": {
+            "start_line": 914,
+            "end_line": 916
+          },
+          "content_hash": "sha256:bef0491cbbdbf66f21e38ef71afb232f6a56270226951e890da846ece4401725"
+        },
+        {
+          "symbol_id": "sym_gear_memory__lib__FileStore__get_memory_entry",
+          "kind": "function",
+          "name": "gear_memory::lib::FileStore::get_memory_entry",
+          "source_ref": "src_src_lib_rs",
+          "range": {
+            "start_line": 887,
+            "end_line": 889
+          },
+          "content_hash": "sha256:735c70c2362412674928cb54f6e98c9620a17b17d538ff74809a31c4c3c78042"
+        },
+        {
+          "symbol_id": "sym_gear_memory__lib__FileStore__get_provenance_record",
+          "kind": "function",
+          "name": "gear_memory::lib::FileStore::get_provenance_record",
+          "source_ref": "src_src_lib_rs",
+          "range": {
+            "start_line": 899,
+            "end_line": 904
+          },
+          "content_hash": "sha256:5991f450e9fcedd04695d1150719f69f926d2cd987bc5d77543cc16ae7817a42"
+        },
+        {
+          "symbol_id": "sym_gear_memory__lib__FileStore__get_source_ref",
+          "kind": "function",
+          "name": "gear_memory::lib::FileStore::get_source_ref",
+          "source_ref": "src_src_lib_rs",
+          "range": {
+            "start_line": 875,
+            "end_line": 877
+          },
+          "content_hash": "sha256:39504531f2ac52bdaca2a0792c96c15df96790aa2b9b44844fc7ad078077e0db"
+        },
+        {
+          "symbol_id": "sym_gear_memory__lib__FileStore__list_all_provenance_records",
+          "kind": "function",
+          "name": "gear_memory::lib::FileStore::list_all_provenance_records",
+          "source_ref": "src_src_lib_rs",
+          "range": {
+            "start_line": 1039,
+            "end_line": 1050
+          },
+          "content_hash": "sha256:5cd2ec6f384d3f26ed1dff62b945328526e5ee1877ef417831da895e047dc563"
+        },
+        {
+          "symbol_id": "sym_gear_memory__lib__FileStore__list_json_files",
+          "kind": "function",
+          "name": "gear_memory::lib::FileStore::list_json_files",
+          "source_ref": "src_src_lib_rs",
+          "range": {
+            "start_line": 820,
+            "end_line": 837
+          },
+          "content_hash": "sha256:e5084f5f0cf5fb731e86889b040f449daf0bb1dfdaa556d0e38b332cbe26922a"
+        },
+        {
+          "symbol_id": "sym_gear_memory__lib__FileStore__lookup_memory_entries_by_state",
+          "kind": "function",
+          "name": "gear_memory::lib::FileStore::lookup_memory_entries_by_state",
+          "source_ref": "src_src_lib_rs",
+          "range": {
+            "start_line": 1020,
+            "end_line": 1037
+          },
+          "content_hash": "sha256:ac2062c9f4f3a3c9e54ba3c05adf664c42c1895316034f32ef531e093c930044"
+        },
+        {
+          "symbol_id": "sym_gear_memory__lib__FileStore__lookup_source_refs_by_content_hash",
+          "kind": "function",
+          "name": "gear_memory::lib::FileStore::lookup_source_refs_by_content_hash",
+          "source_ref": "src_src_lib_rs",
+          "range": {
+            "start_line": 937,
+            "end_line": 954
+          },
+          "content_hash": "sha256:586c015c4c9376398762716fed523dd4b89bedf770b20aee49d5e80350b421e8"
+        },
+        {
+          "symbol_id": "sym_gear_memory__lib__FileStore__lookup_source_refs_by_id",
+          "kind": "function",
+          "name": "gear_memory::lib::FileStore::lookup_source_refs_by_id",
+          "source_ref": "src_src_lib_rs",
+          "range": {
+            "start_line": 930,
+            "end_line": 935
+          },
+          "content_hash": "sha256:206f99dbd67a37f44604bd24f4983a9a33b820833c038730b9f6a8cdcf7adb85"
+        },
+        {
+          "symbol_id": "sym_gear_memory__lib__FileStore__lookup_source_refs_by_origin_product",
+          "kind": "function",
+          "name": "gear_memory::lib::FileStore::lookup_source_refs_by_origin_product",
+          "source_ref": "src_src_lib_rs",
+          "range": {
+            "start_line": 956,
+            "end_line": 973
+          },
+          "content_hash": "sha256:5deb35c86c3a9307f36c2d402227a38cd3660fd67ea54af7b2af45e3158dc038"
+        },
+        {
+          "symbol_id": "sym_gear_memory__lib__FileStore__lookup_source_refs_by_state",
+          "kind": "function",
+          "name": "gear_memory::lib::FileStore::lookup_source_refs_by_state",
+          "source_ref": "src_src_lib_rs",
+          "range": {
+            "start_line": 975,
+            "end_line": 992
+          },
+          "content_hash": "sha256:499dc78b5e7de2ee3025041825debd2ab039d6cc9ac19fa31cd0f2a87ed29206"
+        },
+        {
+          "symbol_id": "sym_gear_memory__lib__FileStore__lookup_source_refs_by_timestamp_range",
+          "kind": "function",
+          "name": "gear_memory::lib::FileStore::lookup_source_refs_by_timestamp_range",
+          "source_ref": "src_src_lib_rs",
+          "range": {
+            "start_line": 994,
+            "end_line": 1018
+          },
+          "content_hash": "sha256:7c1c4a33a61bcd49c5d4b3366556f6ab85f87c8ac24b7f767e7557cfdcb2e1f2"
+        },
+        {
+          "symbol_id": "sym_gear_memory__lib__FileStore__memory_entry_path",
+          "kind": "function",
+          "name": "gear_memory::lib::FileStore::memory_entry_path",
+          "source_ref": "src_src_lib_rs",
+          "range": {
+            "start_line": 796,
+            "end_line": 800
+          },
+          "content_hash": "sha256:671e20a1babf0a0ee70a4a798c29926a2a6274fd46a50de35e737310acbd1156"
+        },
+        {
+          "symbol_id": "sym_gear_memory__lib__FileStore__new",
+          "kind": "function",
+          "name": "gear_memory::lib::FileStore::new",
+          "source_ref": "src_src_lib_rs",
+          "range": {
+            "start_line": 772,
+            "end_line": 788
+          },
+          "content_hash": "sha256:ab03ddb2e9fc23ba66bc28227e1c92cc290be0c0378d30981655145b1455cc4d"
+        },
+        {
+          "symbol_id": "sym_gear_memory__lib__FileStore__provenance_record_path",
+          "kind": "function",
+          "name": "gear_memory::lib::FileStore::provenance_record_path",
+          "source_ref": "src_src_lib_rs",
+          "range": {
+            "start_line": 802,
+            "end_line": 806
+          },
+          "content_hash": "sha256:9df0c3ebb77238df27d68619e8557000b256327d4c63259960756dcb0365b757"
+        },
+        {
+          "symbol_id": "sym_gear_memory__lib__FileStore__put_code_map",
+          "kind": "function",
+          "name": "gear_memory::lib::FileStore::put_code_map",
+          "source_ref": "src_src_lib_rs",
+          "range": {
+            "start_line": 918,
+            "end_line": 924
+          },
+          "content_hash": "sha256:5fd647fc0af0485d135e7a2df5dbc0008bedbcca72fff2071c77c8b1e24df28f"
+        },
+        {
+          "symbol_id": "sym_gear_memory__lib__FileStore__put_event_log_entry",
+          "kind": "function",
+          "name": "gear_memory::lib::FileStore::put_event_log_entry",
+          "source_ref": "src_src_lib_rs",
+          "range": {
+            "start_line": 906,
+            "end_line": 912
+          },
+          "content_hash": "sha256:163d178d2d69ee744931953e9cdab5d3577ffe2773fb1f0a7a9dd315823f4912"
+        },
+        {
+          "symbol_id": "sym_gear_memory__lib__FileStore__put_memory_entry",
+          "kind": "function",
+          "name": "gear_memory::lib::FileStore::put_memory_entry",
+          "source_ref": "src_src_lib_rs",
+          "range": {
+            "start_line": 879,
+            "end_line": 885
+          },
+          "content_hash": "sha256:690d6fde80667f953e7faa286ac2b36b77c2d5609330188f24d21b82bc099937"
+        },
+        {
+          "symbol_id": "sym_gear_memory__lib__FileStore__put_provenance_record",
+          "kind": "function",
+          "name": "gear_memory::lib::FileStore::put_provenance_record",
+          "source_ref": "src_src_lib_rs",
+          "range": {
+            "start_line": 891,
+            "end_line": 897
+          },
+          "content_hash": "sha256:dd40179a8d494f6906f830b34ec6c621e776a93b7ddee809365066a05946ffa9"
+        },
+        {
+          "symbol_id": "sym_gear_memory__lib__FileStore__put_source_ref",
+          "kind": "function",
+          "name": "gear_memory::lib::FileStore::put_source_ref",
+          "source_ref": "src_src_lib_rs",
+          "range": {
+            "start_line": 867,
+            "end_line": 873
+          },
+          "content_hash": "sha256:1cd42d94f6ae568edd44888f5d6c5347816ecf83060e1ed45e1601c3b54e9b31"
+        },
+        {
+          "symbol_id": "sym_gear_memory__lib__FileStore__read_json_file",
+          "kind": "function",
+          "name": "gear_memory::lib::FileStore::read_json_file",
+          "source_ref": "src_src_lib_rs",
+          "range": {
+            "start_line": 839,
+            "end_line": 852
+          },
+          "content_hash": "sha256:0b36173994a828ee6985a4d9e9fccf2b6ec3e8010f351b1dc332d01da0606496"
+        },
+        {
+          "symbol_id": "sym_gear_memory__lib__FileStore__source_path",
+          "kind": "function",
+          "name": "gear_memory::lib::FileStore::source_path",
+          "source_ref": "src_src_lib_rs",
+          "range": {
+            "start_line": 790,
+            "end_line": 794
+          },
+          "content_hash": "sha256:a1cd7152d65dcdb940a1597bbf6c3dc493c86f85830a3cd08ee1098ccbdd27da"
+        },
+        {
+          "symbol_id": "sym_gear_memory__lib__FileStore__write_json_file",
+          "kind": "function",
+          "name": "gear_memory::lib::FileStore::write_json_file",
+          "source_ref": "src_src_lib_rs",
+          "range": {
+            "start_line": 854,
+            "end_line": 863
+          },
+          "content_hash": "sha256:ee0ebc12af81871503d01442e2ef0209f996d717ea8df860bb4989477a7a3c29"
+        },
+        {
+          "symbol_id": "sym_gear_memory__lib__GearMemoryBundle",
+          "kind": "type",
+          "name": "gear_memory::lib::GearMemoryBundle",
+          "source_ref": "src_src_lib_rs",
+          "range": {
+            "start_line": 354,
+            "end_line": 367
+          },
+          "content_hash": "sha256:dd4a988f14ccf63db1844224fc8546f2266a2bd7fb4671693b42780130b5ce36"
+        },
+        {
+          "symbol_id": "sym_gear_memory__lib__GearMemoryBundle__validate",
+          "kind": "function",
+          "name": "gear_memory::lib::GearMemoryBundle::validate",
+          "source_ref": "src_src_lib_rs",
+          "range": {
+            "start_line": 370,
+            "end_line": 395
+          },
+          "content_hash": "sha256:6093c8e28d193bbb60bc314cc90e4fe464e002e81688c51c69999cf4920a71b3"
+        },
+        {
+          "symbol_id": "sym_gear_memory__lib__IndexMetadata",
+          "kind": "type",
+          "name": "gear_memory::lib::IndexMetadata",
+          "source_ref": "src_src_lib_rs",
+          "range": {
+            "start_line": 146,
+            "end_line": 152
+          },
+          "content_hash": "sha256:51b90b28a17b01400c5aae20a5fdc3067edb2433d9c11a3928d15a5e98ca03d3"
+        },
+        {
+          "symbol_id": "sym_gear_memory__lib__IndexMetadata__validate",
+          "kind": "function",
+          "name": "gear_memory::lib::IndexMetadata::validate",
+          "source_ref": "src_src_lib_rs",
+          "range": {
+            "start_line": 155,
+            "end_line": 168
+          },
+          "content_hash": "sha256:cef7879c22c1d8726532b0d302c1f8b149b6ac0e37d4d6b40eda36169491a6f7"
+        },
+        {
+          "symbol_id": "sym_gear_memory__lib__IndexState",
+          "kind": "type",
+          "name": "gear_memory::lib::IndexState",
+          "source_ref": "src_src_lib_rs",
+          "range": {
+            "start_line": 135,
+            "end_line": 144
+          },
+          "content_hash": "sha256:18e633bcf478fe2464748c0f1221094c3f4ed6b1622cb6f31dfd800fee14d409"
+        },
+        {
+          "symbol_id": "sym_gear_memory__lib__MemoryEntry",
+          "kind": "type",
+          "name": "gear_memory::lib::MemoryEntry",
+          "source_ref": "src_src_lib_rs",
+          "range": {
+            "start_line": 171,
+            "end_line": 179
+          },
+          "content_hash": "sha256:8a286c5321f42934651e6af9f538bfe51a7ad6313dd834cb6a0528b1af40688e"
+        },
+        {
+          "symbol_id": "sym_gear_memory__lib__MemoryEntry__validate",
+          "kind": "function",
+          "name": "gear_memory::lib::MemoryEntry::validate",
+          "source_ref": "src_src_lib_rs",
+          "range": {
+            "start_line": 182,
+            "end_line": 188
+          },
+          "content_hash": "sha256:5c7dc3e370da36fe69c8762d23a985bc4cc010ff441b8d2554847266dd55fb78"
+        },
+        {
+          "symbol_id": "sym_gear_memory__lib__MetadataValidationError",
+          "kind": "type",
+          "name": "gear_memory::lib::MetadataValidationError",
+          "source_ref": "src_src_lib_rs",
+          "range": {
+            "start_line": 448,
+            "end_line": 451
+          },
+          "content_hash": "sha256:bd83078a6ad843cb8aa64e73d22c38c5b5fa8c5ae8aac23533c2e931589d90f0"
+        },
+        {
+          "symbol_id": "sym_gear_memory__lib__MetadataValidationError__fmt",
+          "kind": "function",
+          "name": "gear_memory::lib::MetadataValidationError::fmt",
+          "source_ref": "src_src_lib_rs",
+          "range": {
+            "start_line": 454,
+            "end_line": 460
+          },
+          "content_hash": "sha256:326e45128cf0d20850e05db86e607e6f87a492cb6d7da52643cd66889bf420b7"
+        },
+        {
+          "symbol_id": "sym_gear_memory__lib__ProjectCard",
+          "kind": "type",
+          "name": "gear_memory::lib::ProjectCard",
+          "source_ref": "src_src_lib_rs",
+          "range": {
+            "start_line": 21,
+            "end_line": 27
+          },
+          "content_hash": "sha256:de1eb42007302afc7ab3b156b0f7391419ee5ff4b52e60c6f5b263da49ea38e3"
+        },
+        {
+          "symbol_id": "sym_gear_memory__lib__ProvenanceOperation",
+          "kind": "type",
+          "name": "gear_memory::lib::ProvenanceOperation",
+          "source_ref": "src_src_lib_rs",
+          "range": {
+            "start_line": 92,
+            "end_line": 107
+          },
+          "content_hash": "sha256:edd4e116f3aa3dd7df8450c8b2a0ca3d722c0ec3838a2897633b4dd262e53f3c"
+        },
+        {
+          "symbol_id": "sym_gear_memory__lib__ProvenanceRecord",
+          "kind": "type",
+          "name": "gear_memory::lib::ProvenanceRecord",
+          "source_ref": "src_src_lib_rs",
+          "range": {
+            "start_line": 109,
+            "end_line": 119
+          },
+          "content_hash": "sha256:adceb3b0fdae636e6bcdcb9795b8a70431556ac0588ea9b4ce802f04d1c94328"
+        },
+        {
+          "symbol_id": "sym_gear_memory__lib__ProvenanceRecord__stable_hash",
+          "kind": "function",
+          "name": "gear_memory::lib::ProvenanceRecord::stable_hash",
+          "source_ref": "src_src_lib_rs",
+          "range": {
+            "start_line": 130,
+            "end_line": 132
+          },
+          "content_hash": "sha256:24b9960800f5c4ae8c7f6ca5c389d7994fdac90c7f8d3021b24f5bcc290f1af2"
+        },
+        {
+          "symbol_id": "sym_gear_memory__lib__ProvenanceRecord__validate",
+          "kind": "function",
+          "name": "gear_memory::lib::ProvenanceRecord::validate",
+          "source_ref": "src_src_lib_rs",
+          "range": {
+            "start_line": 122,
+            "end_line": 128
+          },
+          "content_hash": "sha256:692dbbae8d3bb64bd34307e674b8a6d921d384274428879bc57744a374bf85e4"
+        },
+        {
+          "symbol_id": "sym_gear_memory__lib__SafeMetadata",
+          "kind": "type",
+          "name": "gear_memory::lib::SafeMetadata",
+          "source_ref": "src_src_lib_rs",
+          "range": {
+            "start_line": 398,
+            "end_line": 402
+          },
+          "content_hash": "sha256:67cad688db66f6088455de6033587abbf6d58493e09409a93f3f7857ae030fbd"
+        },
+        {
+          "symbol_id": "sym_gear_memory__lib__SafeMetadata__fmt",
+          "kind": "function",
+          "name": "gear_memory::lib::SafeMetadata::fmt",
+          "source_ref": "src_src_lib_rs",
+          "range": {
+            "start_line": 434,
+            "end_line": 445
+          },
+          "content_hash": "sha256:89c74fe9143219ad35ad9d3453739b4f8a091ae0aba6fa0358e021bd40358759"
+        },
+        {
+          "symbol_id": "sym_gear_memory__lib__SafeMetadata__from_pairs",
+          "kind": "function",
+          "name": "gear_memory::lib::SafeMetadata::from_pairs",
+          "source_ref": "src_src_lib_rs",
+          "range": {
+            "start_line": 405,
+            "end_line": 412
+          },
+          "content_hash": "sha256:6ba8c4f44f824be3ec32e9b4a49d796f72d4d69dcc0bf1d3d74e4714bfe45b2c"
+        },
+        {
+          "symbol_id": "sym_gear_memory__lib__SafeMetadata__from_values",
+          "kind": "function",
+          "name": "gear_memory::lib::SafeMetadata::from_values",
+          "source_ref": "src_src_lib_rs",
+          "range": {
+            "start_line": 414,
+            "end_line": 416
+          },
+          "content_hash": "sha256:fca5187ea77c16f0a9db924114cef53363e17e27c8c8a1a96b4abd46ba0e99a5"
+        },
+        {
+          "symbol_id": "sym_gear_memory__lib__SafeMetadata__stable_hash",
+          "kind": "function",
+          "name": "gear_memory::lib::SafeMetadata::stable_hash",
+          "source_ref": "src_src_lib_rs",
+          "range": {
+            "start_line": 428,
+            "end_line": 430
+          },
+          "content_hash": "sha256:46814c167c9667435c4bbe5a021a353df99026f269102a9eb43f675e6a63ab2f"
+        },
+        {
+          "symbol_id": "sym_gear_memory__lib__SafeMetadata__validate",
+          "kind": "function",
+          "name": "gear_memory::lib::SafeMetadata::validate",
+          "source_ref": "src_src_lib_rs",
+          "range": {
+            "start_line": 418,
+            "end_line": 426
+          },
+          "content_hash": "sha256:0cff9ede5fe238248370a159a3409440cf858f104a914709d19f2e5de0bd9822"
+        },
+        {
+          "symbol_id": "sym_gear_memory__lib__SourceRange",
+          "kind": "type",
+          "name": "gear_memory::lib::SourceRange",
+          "source_ref": "src_src_lib_rs",
+          "range": {
+            "start_line": 306,
+            "end_line": 310
+          },
+          "content_hash": "sha256:8a15a489a30ac6de71be6b47dd56d60c91c70f88733e8ac02e911cd422f1c402"
+        },
+        {
+          "symbol_id": "sym_gear_memory__lib__SourceRange__validate",
+          "kind": "function",
+          "name": "gear_memory::lib::SourceRange::validate",
+          "source_ref": "src_src_lib_rs",
+          "range": {
+            "start_line": 313,
+            "end_line": 321
+          },
+          "content_hash": "sha256:8c98d66a0fc88df21bc70dc6f21d5179b4e94f863ff1798682bb787cda31e548"
+        },
+        {
+          "symbol_id": "sym_gear_memory__lib__SourceRef",
+          "kind": "type",
+          "name": "gear_memory::lib::SourceRef",
+          "source_ref": "src_src_lib_rs",
+          "range": {
+            "start_line": 67,
+            "end_line": 79
+          },
+          "content_hash": "sha256:6b4f57b10447ddaba5a6ec70799b752eb6ad52c91c290f3d51bc21569ea38f08"
+        },
+        {
+          "symbol_id": "sym_gear_memory__lib__SourceRef__validate",
+          "kind": "function",
+          "name": "gear_memory::lib::SourceRef::validate",
+          "source_ref": "src_src_lib_rs",
+          "range": {
+            "start_line": 82,
+            "end_line": 89
+          },
+          "content_hash": "sha256:16de3e2362e4ca42fe3f0c7258f197157dac1ab1a2e00299124dd41fb9e7d1da"
+        },
+        {
+          "symbol_id": "sym_gear_memory__lib__SourceState",
+          "kind": "type",
+          "name": "gear_memory::lib::SourceState",
+          "source_ref": "src_src_lib_rs",
+          "range": {
+            "start_line": 57,
+            "end_line": 65
+          },
+          "content_hash": "sha256:ebddcff615bd18cfc4a4598a03bef1f2de9c9beeadf8163f30d920df2849d079"
+        },
+        {
+          "symbol_id": "sym_gear_memory__lib__SourceType",
+          "kind": "type",
+          "name": "gear_memory::lib::SourceType",
+          "source_ref": "src_src_lib_rs",
+          "range": {
+            "start_line": 44,
+            "end_line": 55
+          },
+          "content_hash": "sha256:fee76fd7362b4fd0b898766eca4ebcbd4f8fb67aad9db71e092335c860f3b314"
+        },
+        {
+          "symbol_id": "sym_gear_memory__lib__Store",
+          "kind": "trait",
+          "name": "gear_memory::lib::Store",
+          "source_ref": "src_src_lib_rs",
+          "range": {
+            "start_line": 637,
+            "end_line": 693
+          },
+          "content_hash": "sha256:5ccca65e59904df9b0118141b4df2f0911337571dd79b9f12b8831d234be70f0"
+        },
+        {
+          "symbol_id": "sym_gear_memory__lib__StoreError",
+          "kind": "type",
+          "name": "gear_memory::lib::StoreError",
+          "source_ref": "src_src_lib_rs",
+          "range": {
+            "start_line": 613,
+            "end_line": 621
+          },
+          "content_hash": "sha256:133a97b8ab61b510eccd93e5b29b408708ace071c3e267ad6de1dbc9f287e27c"
+        },
+        {
+          "symbol_id": "sym_gear_memory__lib__StoreError__fmt",
+          "kind": "function",
+          "name": "gear_memory::lib::StoreError::fmt",
+          "source_ref": "src_src_lib_rs",
+          "range": {
+            "start_line": 624,
+            "end_line": 632
+          },
+          "content_hash": "sha256:bcfe688c2ac812fd68fe6cfa006d0c8b5ae5b649ad2bd47ea46307419b76c780"
+        },
+        {
+          "symbol_id": "sym_gear_memory__lib__erase_source",
+          "kind": "function",
+          "name": "gear_memory::lib::erase_source",
+          "source_ref": "src_src_lib_rs",
+          "range": {
+            "start_line": 695,
+            "end_line": 757
+          },
+          "content_hash": "sha256:04ccab5292fb95911f5c9ef82b8b7dff4742c2d6d7d5b2d9bcb189963849b016"
+        },
+        {
+          "symbol_id": "sym_gear_memory__lib__is_secret_like_key",
+          "kind": "function",
+          "name": "gear_memory::lib::is_secret_like_key",
+          "source_ref": "src_src_lib_rs",
+          "range": {
+            "start_line": 503,
+            "end_line": 525
+          },
+          "content_hash": "sha256:2db3c8821619edbb1b22c09b2273ae42d85debea8d23fa77c56eb674d6ebed38"
+        },
+        {
+          "symbol_id": "sym_gear_memory__lib__is_valid_sha256",
+          "kind": "function",
+          "name": "gear_memory::lib::is_valid_sha256",
+          "source_ref": "src_src_lib_rs",
+          "range": {
+            "start_line": 582,
+            "end_line": 589
+          },
+          "content_hash": "sha256:a0a44ba3127df4cb0d0d3c5a7305e6e7b3e49575c4f3eb1c78befb324ac7edf8"
+        },
+        {
+          "symbol_id": "sym_gear_memory__lib__stable_json_hash",
+          "kind": "function",
+          "name": "gear_memory::lib::stable_json_hash",
+          "source_ref": "src_src_lib_rs",
+          "range": {
+            "start_line": 591,
+            "end_line": 599
+          },
+          "content_hash": "sha256:9fe8d1253889ecb61ad73b8cd096cc704fbc974c5cb6b0ff3a29f58178588184"
+        },
+        {
+          "symbol_id": "sym_gear_memory__lib__summary",
+          "kind": "function",
+          "name": "gear_memory::lib::summary",
+          "source_ref": "src_src_lib_rs",
+          "range": {
+            "start_line": 36,
+            "end_line": 42
+          },
+          "content_hash": "sha256:a307e284a403d3e0285aff1d2b50dc4d84804a14b7eea0866994b14921a05881"
+        },
+        {
+          "symbol_id": "sym_gear_memory__lib__to_lower_hex",
+          "kind": "function",
+          "name": "gear_memory::lib::to_lower_hex",
+          "source_ref": "src_src_lib_rs",
+          "range": {
+            "start_line": 601,
+            "end_line": 611
+          },
+          "content_hash": "sha256:347a4e4f2869f68f9d8bbdc54a44536a13cf48da85c9129c62acae7813d3e229"
+        },
+        {
+          "symbol_id": "sym_gear_memory__lib__validate_metadata",
+          "kind": "function",
+          "name": "gear_memory::lib::validate_metadata",
+          "source_ref": "src_src_lib_rs",
+          "range": {
+            "start_line": 574,
+            "end_line": 580
+          },
+          "content_hash": "sha256:aed69d96293a03a841f8d5c47206fa0ef2caed62a9ec46bb4ba42871fa46f571"
+        },
+        {
+          "symbol_id": "sym_gear_memory__lib__validate_non_empty_field",
+          "kind": "function",
+          "name": "gear_memory::lib::validate_non_empty_field",
+          "source_ref": "src_src_lib_rs",
+          "range": {
+            "start_line": 552,
+            "end_line": 561
+          },
+          "content_hash": "sha256:57b7ec494b8b291505b512ca405c0cbfb1660a8da291abe0a9d5abc765a3477c"
+        },
+        {
+          "symbol_id": "sym_gear_memory__lib__validate_non_empty_list",
+          "kind": "function",
+          "name": "gear_memory::lib::validate_non_empty_list",
+          "source_ref": "src_src_lib_rs",
+          "range": {
+            "start_line": 563,
+            "end_line": 572
+          },
+          "content_hash": "sha256:a2af8c5a1f2be9cb7e2e9d37745886636853ed556a8487b50e9a5bb82e1997a7"
+        },
+        {
+          "symbol_id": "sym_gear_memory__lib__validate_sha256_field",
+          "kind": "function",
+          "name": "gear_memory::lib::validate_sha256_field",
+          "source_ref": "src_src_lib_rs",
+          "range": {
+            "start_line": 527,
+            "end_line": 536
+          },
+          "content_hash": "sha256:5dd20bf02e6e95130f3558f3019a91491ba62a83cd2ad6096c5a68e0cf43c343"
+        },
+        {
+          "symbol_id": "sym_gear_memory__lib__validate_timestamp_field",
+          "kind": "function",
+          "name": "gear_memory::lib::validate_timestamp_field",
+          "source_ref": "src_src_lib_rs",
+          "range": {
+            "start_line": 538,
+            "end_line": 550
+          },
+          "content_hash": "sha256:c5ba9e838e39e1aea54357f1e05edde0ade6e91cea9ea6ed94558f40bae8209f"
+        },
+        {
+          "symbol_id": "sym_gear_memory__main__cmd_delete",
+          "kind": "function",
+          "name": "gear_memory::main::cmd_delete",
+          "source_ref": "src_src_main_rs",
+          "range": {
+            "start_line": 165,
+            "end_line": 177
+          },
+          "content_hash": "sha256:3514f51a3e7725fbaeb0216b28e952902dada7ab21ab756ca1e0e00f9074e138"
+        },
+        {
+          "symbol_id": "sym_gear_memory__main__cmd_get",
+          "kind": "function",
+          "name": "gear_memory::main::cmd_get",
+          "source_ref": "src_src_main_rs",
+          "range": {
+            "start_line": 108,
+            "end_line": 122
+          },
+          "content_hash": "sha256:7899c5397cf4cd4b437bfb763c150f9eea31b9d95c3748325c6fa4e0df2ca586"
+        },
+        {
+          "symbol_id": "sym_gear_memory__main__cmd_ingest",
+          "kind": "function",
+          "name": "gear_memory::main::cmd_ingest",
+          "source_ref": "src_src_main_rs",
+          "range": {
+            "start_line": 179,
+            "end_line": 222
+          },
+          "content_hash": "sha256:568ccbf36884a3d49fca6b1284e147508a8de54668248a66cbf71ba5bd9945b3"
+        },
+        {
+          "symbol_id": "sym_gear_memory__main__cmd_list",
+          "kind": "function",
+          "name": "gear_memory::main::cmd_list",
+          "source_ref": "src_src_main_rs",
+          "range": {
+            "start_line": 124,
+            "end_line": 163
+          },
+          "content_hash": "sha256:87f25757d1b0c09e32a3e7b95a131a1d0fbae39fa4c627545481c22682d78ef6"
+        },
+        {
+          "symbol_id": "sym_gear_memory__main__cmd_query",
+          "kind": "function",
+          "name": "gear_memory::main::cmd_query",
+          "source_ref": "src_src_main_rs",
+          "range": {
+            "start_line": 224,
+            "end_line": 263
+          },
+          "content_hash": "sha256:5a30e9cf2bac595efe721f1550dbbdce443d987165599e2a8a1a30e89a31f64e"
+        },
+        {
+          "symbol_id": "sym_gear_memory__main__cmd_snippet",
+          "kind": "function",
+          "name": "gear_memory::main::cmd_snippet",
+          "source_ref": "src_src_main_rs",
+          "range": {
+            "start_line": 312,
+            "end_line": 368
+          },
+          "content_hash": "sha256:74729960e5494e2899c14b0c6191a7c69688121838d0abaafd63cb0b5350dd73"
+        },
+        {
+          "symbol_id": "sym_gear_memory__main__cmd_stats",
+          "kind": "function",
+          "name": "gear_memory::main::cmd_stats",
+          "source_ref": "src_src_main_rs",
+          "range": {
+            "start_line": 300,
+            "end_line": 310
+          },
+          "content_hash": "sha256:123a3893e440538c8f75140b3361615a555a9f134255180cae60297da744b06a"
+        },
+        {
+          "symbol_id": "sym_gear_memory__main__cmd_trace",
+          "kind": "function",
+          "name": "gear_memory::main::cmd_trace",
+          "source_ref": "src_src_main_rs",
+          "range": {
+            "start_line": 265,
+            "end_line": 298
+          },
+          "content_hash": "sha256:461f06b04a3d49d67564735d14e3774ace26de735001f4aeaff91e0b85a3e624"
+        },
+        {
+          "symbol_id": "sym_gear_memory__main__cmd_validate",
+          "kind": "function",
+          "name": "gear_memory::main::cmd_validate",
+          "source_ref": "src_src_main_rs",
+          "range": {
+            "start_line": 95,
+            "end_line": 106
+          },
+          "content_hash": "sha256:b3d4ea3f3c028b9c9c9e79a799a4128c777c23be85562bbe9de957a76344299c"
+        },
+        {
+          "symbol_id": "sym_gear_memory__main__current_timestamp_rfc3339",
+          "kind": "function",
+          "name": "gear_memory::main::current_timestamp_rfc3339",
+          "source_ref": "src_src_main_rs",
+          "range": {
+            "start_line": 375,
+            "end_line": 378
+          },
+          "content_hash": "sha256:783568ebfdfc4ec5c6c79f20abc0edaf0e98c030457f4b6d7ab72294a52e84e0"
+        },
+        {
+          "symbol_id": "sym_gear_memory__main__main",
+          "kind": "function",
+          "name": "gear_memory::main::main",
+          "source_ref": "src_src_main_rs",
+          "range": {
+            "start_line": 22,
+            "end_line": 51
+          },
+          "content_hash": "sha256:9aae21d688ab31557f4cf2e0d595fda009c62a68dbe52aa492f52b932060e1c9"
+        },
+        {
+          "symbol_id": "sym_gear_memory__main__print_envelope",
+          "kind": "function",
+          "name": "gear_memory::main::print_envelope",
+          "source_ref": "src_src_main_rs",
+          "range": {
+            "start_line": 86,
+            "end_line": 93
+          },
+          "content_hash": "sha256:71725ca2ffd2a07e5e0e2e464bea459c71770876f6b5983634360ae01c609037"
+        },
+        {
+          "symbol_id": "sym_gear_memory__main__rfc3339_from_unix_secs",
+          "kind": "function",
+          "name": "gear_memory::main::rfc3339_from_unix_secs",
+          "source_ref": "src_src_main_rs",
+          "range": {
+            "start_line": 370,
+            "end_line": 373
+          },
+          "content_hash": "sha256:32d6901f154faccf31ec0d129390216d9e43b18187d451d119dd7e1055f00491"
+        },
+        {
+          "symbol_id": "sym_gear_memory__main__take_db_path",
+          "kind": "function",
+          "name": "gear_memory::main::take_db_path",
+          "source_ref": "src_src_main_rs",
+          "range": {
+            "start_line": 82,
+            "end_line": 84
+          },
+          "content_hash": "sha256:d96aec95dcb640b6a6fdf4e705b4b2bcb00d471db95d6a61a5fd59072593c17f"
+        },
+        {
+          "symbol_id": "sym_gear_memory__main__take_flag",
+          "kind": "function",
+          "name": "gear_memory::main::take_flag",
+          "source_ref": "src_src_main_rs",
+          "range": {
+            "start_line": 67,
+            "end_line": 80
+          },
+          "content_hash": "sha256:8f59a85da612cc84c6b1243fcb37ed5476f9738661e632d50a1b4c9ff0043007"
+        },
+        {
+          "symbol_id": "sym_gear_memory__main__usage",
+          "kind": "function",
+          "name": "gear_memory::main::usage",
+          "source_ref": "src_src_main_rs",
+          "range": {
+            "start_line": 53,
+            "end_line": 65
+          },
+          "content_hash": "sha256:daf314e5d8b819f0727d99ccf28fea8307a6b2bfc8b8697ac33286aeb7a5563c"
+        },
+        {
+          "symbol_id": "sym_gear_memory__sqlite__EdgeDirection",
+          "kind": "type",
+          "name": "gear_memory::sqlite::EdgeDirection",
+          "source_ref": "src_src_sqlite_rs",
+          "range": {
+            "start_line": 130,
+            "end_line": 137
+          },
+          "content_hash": "sha256:052d8cfbac5a7b2dd3479014f72182b2aa6caf811c5c0106c9185e818bfa0d59"
+        },
+        {
+          "symbol_id": "sym_gear_memory__sqlite__IngestReport",
+          "kind": "type",
+          "name": "gear_memory::sqlite::IngestReport",
+          "source_ref": "src_src_sqlite_rs",
+          "range": {
+            "start_line": 156,
+            "end_line": 166
+          },
+          "content_hash": "sha256:1ae683cbbaaa76888f3ce5e3388624aeb27a0573da9efad005050903039e9eda"
+        },
+        {
+          "symbol_id": "sym_gear_memory__sqlite__SqliteStore",
+          "kind": "type",
+          "name": "gear_memory::sqlite::SqliteStore",
+          "source_ref": "src_src_sqlite_rs",
+          "range": {
+            "start_line": 123,
+            "end_line": 128
+          },
+          "content_hash": "sha256:f8d7888964b5998e4287232bdab8a1a32c56fe41ba35b85b82d80c02e2f7fbc0"
+        },
+        {
+          "symbol_id": "sym_gear_memory__sqlite__SqliteStore__get_code_map",
+          "kind": "function",
+          "name": "gear_memory::sqlite::SqliteStore::get_code_map",
+          "source_ref": "src_src_sqlite_rs",
+          "range": {
+            "start_line": 763,
+            "end_line": 770
+          },
+          "content_hash": "sha256:7d15bcd2671bfd2ec604a02442e77ae29950ef8bd77334bae053ce3dd2df18ec"
+        },
+        {
+          "symbol_id": "sym_gear_memory__sqlite__SqliteStore__get_event_log_entry",
+          "kind": "function",
+          "name": "gear_memory::sqlite::SqliteStore::get_event_log_entry",
+          "source_ref": "src_src_sqlite_rs",
+          "range": {
+            "start_line": 747,
+            "end_line": 754
+          },
+          "content_hash": "sha256:c16cc6aa1c8611bd055b498cba27ac1b56fa50b51d86e3f9a7654e24a144a5ea"
+        },
+        {
+          "symbol_id": "sym_gear_memory__sqlite__SqliteStore__get_memory_entry",
+          "kind": "function",
+          "name": "gear_memory::sqlite::SqliteStore::get_memory_entry",
+          "source_ref": "src_src_sqlite_rs",
+          "range": {
+            "start_line": 716,
+            "end_line": 723
+          },
+          "content_hash": "sha256:39a4f94fe05023510ea7d92798fa16a025a3101ae3312286308635e3983fed67"
+        },
+        {
+          "symbol_id": "sym_gear_memory__sqlite__SqliteStore__get_provenance_record",
+          "kind": "function",
+          "name": "gear_memory::sqlite::SqliteStore::get_provenance_record",
+          "source_ref": "src_src_sqlite_rs",
+          "range": {
+            "start_line": 730,
+            "end_line": 740
+          },
+          "content_hash": "sha256:0ff7ab97311b47a57546ce9aa619faa74b2307a73a71b2f8160897faf15cb9e4"
+        },
+        {
+          "symbol_id": "sym_gear_memory__sqlite__SqliteStore__get_source_ref",
+          "kind": "function",
+          "name": "gear_memory::sqlite::SqliteStore::get_source_ref",
+          "source_ref": "src_src_sqlite_rs",
+          "range": {
+            "start_line": 702,
+            "end_line": 709
+          },
+          "content_hash": "sha256:3754580ed5010bbbbb0972e852ac92023f2dcb9f7ec64fbf273018eee4cf150d"
+        },
+        {
+          "symbol_id": "sym_gear_memory__sqlite__SqliteStore__ingest_bundle",
+          "kind": "function",
+          "name": "gear_memory::sqlite::SqliteStore::ingest_bundle",
+          "source_ref": "src_src_sqlite_rs",
+          "range": {
+            "start_line": 412,
+            "end_line": 456
+          },
+          "content_hash": "sha256:abb7039ed5cd9c995bb85d2cf9301472319d5a14a59dda1b4e9e8cb80b2e6d47"
+        },
+        {
+          "symbol_id": "sym_gear_memory__sqlite__SqliteStore__list_all_provenance_records",
+          "kind": "function",
+          "name": "gear_memory::sqlite::SqliteStore::list_all_provenance_records",
+          "source_ref": "src_src_sqlite_rs",
+          "range": {
+            "start_line": 859,
+            "end_line": 866
+          },
+          "content_hash": "sha256:d6649e406088d044f515569d81aa130714e75f9bb409ad36332a2592d203ba0a"
+        },
+        {
+          "symbol_id": "sym_gear_memory__sqlite__SqliteStore__lock",
+          "kind": "function",
+          "name": "gear_memory::sqlite::SqliteStore::lock",
+          "source_ref": "src_src_sqlite_rs",
+          "range": {
+            "start_line": 406,
+            "end_line": 410
+          },
+          "content_hash": "sha256:953acadc209368a6eb25b562b01ef853f1c90bb458686c6795285d40018f3573"
+        },
+        {
+          "symbol_id": "sym_gear_memory__sqlite__SqliteStore__lookup_memory_entries_by_state",
+          "kind": "function",
+          "name": "gear_memory::sqlite::SqliteStore::lookup_memory_entries_by_state",
+          "source_ref": "src_src_sqlite_rs",
+          "range": {
+            "start_line": 846,
+            "end_line": 857
+          },
+          "content_hash": "sha256:700dcc7c04dfa894510d52ee6e852c70f80a944f0c6c96f024c3dc858ce78f10"
+        },
+        {
+          "symbol_id": "sym_gear_memory__sqlite__SqliteStore__lookup_source_refs_by_content_hash",
+          "kind": "function",
+          "name": "gear_memory::sqlite::SqliteStore::lookup_source_refs_by_content_hash",
+          "source_ref": "src_src_sqlite_rs",
+          "range": {
+            "start_line": 779,
+            "end_line": 789
+          },
+          "content_hash": "sha256:29ea6d1ce86e9ebebe359d8e277fe94ca7636b096880099d6f6012b7449fd9c0"
+        },
+        {
+          "symbol_id": "sym_gear_memory__sqlite__SqliteStore__lookup_source_refs_by_id",
+          "kind": "function",
+          "name": "gear_memory::sqlite::SqliteStore::lookup_source_refs_by_id",
+          "source_ref": "src_src_sqlite_rs",
+          "range": {
+            "start_line": 772,
+            "end_line": 777
+          },
+          "content_hash": "sha256:aeca595a3d3f39da5be2b432e674d142826082e9c015572841d98a9facd4cadd"
+        },
+        {
+          "symbol_id": "sym_gear_memory__sqlite__SqliteStore__lookup_source_refs_by_origin_product",
+          "kind": "function",
+          "name": "gear_memory::sqlite::SqliteStore::lookup_source_refs_by_origin_product",
+          "source_ref": "src_src_sqlite_rs",
+          "range": {
+            "start_line": 791,
+            "end_line": 801
+          },
+          "content_hash": "sha256:f92384e6a138e5aeb552a01485ac20badabc8b6f52f8cf108cca3783bd4d2fe0"
+        },
+        {
+          "symbol_id": "sym_gear_memory__sqlite__SqliteStore__lookup_source_refs_by_state",
+          "kind": "function",
+          "name": "gear_memory::sqlite::SqliteStore::lookup_source_refs_by_state",
+          "source_ref": "src_src_sqlite_rs",
+          "range": {
+            "start_line": 803,
+            "end_line": 814
+          },
+          "content_hash": "sha256:01f93e6f1388229ce93cd08a1732b4e8d8b12ea37f32c9e0cf2c8a4e885750d5"
+        },
+        {
+          "symbol_id": "sym_gear_memory__sqlite__SqliteStore__lookup_source_refs_by_timestamp_range",
+          "kind": "function",
+          "name": "gear_memory::sqlite::SqliteStore::lookup_source_refs_by_timestamp_range",
+          "source_ref": "src_src_sqlite_rs",
+          "range": {
+            "start_line": 816,
+            "end_line": 844
+          },
+          "content_hash": "sha256:e6f73502751a83fe366261b3a238e4212247a63efff01631535e2a74f4394424"
+        },
+        {
+          "symbol_id": "sym_gear_memory__sqlite__SqliteStore__new",
+          "kind": "function",
+          "name": "gear_memory::sqlite::SqliteStore::new",
+          "source_ref": "src_src_sqlite_rs",
+          "range": {
+            "start_line": 370,
+            "end_line": 404
+          },
+          "content_hash": "sha256:2a35d1ab2bfd686438d79f723e2ae2787cd09fa3da6f505cb474023ed59b1d52"
+        },
+        {
+          "symbol_id": "sym_gear_memory__sqlite__SqliteStore__put_code_map",
+          "kind": "function",
+          "name": "gear_memory::sqlite::SqliteStore::put_code_map",
+          "source_ref": "src_src_sqlite_rs",
+          "range": {
+            "start_line": 756,
+            "end_line": 761
+          },
+          "content_hash": "sha256:b3aae8cacae107276facf7a9ea2a26a08b071fe3b4de13fca6bcc4ad8411ed35"
+        },
+        {
+          "symbol_id": "sym_gear_memory__sqlite__SqliteStore__put_event_log_entry",
+          "kind": "function",
+          "name": "gear_memory::sqlite::SqliteStore::put_event_log_entry",
+          "source_ref": "src_src_sqlite_rs",
+          "range": {
+            "start_line": 742,
+            "end_line": 745
+          },
+          "content_hash": "sha256:52a644005c736804194db3ab2e5c978b1a01be4748e10daaaaa2f02a55a92cb1"
+        },
+        {
+          "symbol_id": "sym_gear_memory__sqlite__SqliteStore__put_memory_entry",
+          "kind": "function",
+          "name": "gear_memory::sqlite::SqliteStore::put_memory_entry",
+          "source_ref": "src_src_sqlite_rs",
+          "range": {
+            "start_line": 711,
+            "end_line": 714
+          },
+          "content_hash": "sha256:cc7726224d7b1df7428026b95fdaa3381ebf85c0e98c91023417dfca1d1d511a"
+        },
+        {
+          "symbol_id": "sym_gear_memory__sqlite__SqliteStore__put_provenance_record",
+          "kind": "function",
+          "name": "gear_memory::sqlite::SqliteStore::put_provenance_record",
+          "source_ref": "src_src_sqlite_rs",
+          "range": {
+            "start_line": 725,
+            "end_line": 728
+          },
+          "content_hash": "sha256:182b9ec1773ce41865bda47422450fdf0d30f1f082b94435b68fe6e946feb8f5"
+        },
+        {
+          "symbol_id": "sym_gear_memory__sqlite__SqliteStore__put_source_ref",
+          "kind": "function",
+          "name": "gear_memory::sqlite::SqliteStore::put_source_ref",
+          "source_ref": "src_src_sqlite_rs",
+          "range": {
+            "start_line": 697,
+            "end_line": 700
+          },
+          "content_hash": "sha256:2c292f52c594008b11ccfa8e2770837049d08c6e8d5efb9abb0c0aa7ad11f18b"
+        },
+        {
+          "symbol_id": "sym_gear_memory__sqlite__SqliteStore__stats",
+          "kind": "function",
+          "name": "gear_memory::sqlite::SqliteStore::stats",
+          "source_ref": "src_src_sqlite_rs",
+          "range": {
+            "start_line": 623,
+            "end_line": 678
+          },
+          "content_hash": "sha256:a4065b86051b449f318138ff22e7a4b3870496eb9802eec30a942f892c8484ac"
+        },
+        {
+          "symbol_id": "sym_gear_memory__sqlite__SqliteStore__symbol_neighbors",
+          "kind": "function",
+          "name": "gear_memory::sqlite::SqliteStore::symbol_neighbors",
+          "source_ref": "src_src_sqlite_rs",
+          "range": {
+            "start_line": 523,
+            "end_line": 575
+          },
+          "content_hash": "sha256:ea6bd75f0f06b78b3a3e3eacbe057a3557223a7d94036cc0fe6ad756d173368f"
+        },
+        {
+          "symbol_id": "sym_gear_memory__sqlite__SqliteStore__symbol_search",
+          "kind": "function",
+          "name": "gear_memory::sqlite::SqliteStore::symbol_search",
+          "source_ref": "src_src_sqlite_rs",
+          "range": {
+            "start_line": 458,
+            "end_line": 521
+          },
+          "content_hash": "sha256:5fdc78c4e5c4d29c0eed097b9351619f216c0f82f4c86be99b4011c37e1c6f04"
+        },
+        {
+          "symbol_id": "sym_gear_memory__sqlite__SqliteStore__trace_bfs",
+          "kind": "function",
+          "name": "gear_memory::sqlite::SqliteStore::trace_bfs",
+          "source_ref": "src_src_sqlite_rs",
+          "range": {
+            "start_line": 577,
+            "end_line": 621
+          },
+          "content_hash": "sha256:6964210724facaa4a1b95ca7f5a7f33b02bf456d3a85fda5eac3df6af2c37863"
+        },
+        {
+          "symbol_id": "sym_gear_memory__sqlite__StoreStats",
+          "kind": "type",
+          "name": "gear_memory::sqlite::StoreStats",
+          "source_ref": "src_src_sqlite_rs",
+          "range": {
+            "start_line": 146,
+            "end_line": 154
+          },
+          "content_hash": "sha256:2b7b5cfb7a9b6cbbdf326b1a25afb7d6e5893a0eadb0b94b9aaa72a4bc0c642c"
+        },
+        {
+          "symbol_id": "sym_gear_memory__sqlite__TraceHop",
+          "kind": "type",
+          "name": "gear_memory::sqlite::TraceHop",
+          "source_ref": "src_src_sqlite_rs",
+          "range": {
+            "start_line": 139,
+            "end_line": 144
+          },
+          "content_hash": "sha256:26bd1f9ac30d6c650593b39ed3594004390ef9d6a3adc0cef4f9eebdb5e0d897"
+        },
+        {
+          "symbol_id": "sym_gear_memory__sqlite__collect_records",
+          "kind": "function",
+          "name": "gear_memory::sqlite::collect_records",
+          "source_ref": "src_src_sqlite_rs",
+          "range": {
+            "start_line": 350,
+            "end_line": 367
+          },
+          "content_hash": "sha256:a343054cd22d2af8a30dc5ad48f687220b1e7618511cc1da4291ebdf63450de6"
+        },
+        {
+          "symbol_id": "sym_gear_memory__sqlite__de_err",
+          "kind": "function",
+          "name": "gear_memory::sqlite::de_err",
+          "source_ref": "src_src_sqlite_rs",
+          "range": {
+            "start_line": 176,
+            "end_line": 178
+          },
+          "content_hash": "sha256:dfdc9ea6515dd8c275170e45707f2c9af0740ad1b3f7c2bdcb393df320051a16"
+        },
+        {
+          "symbol_id": "sym_gear_memory__sqlite__edge_kind_from_token",
+          "kind": "function",
+          "name": "gear_memory::sqlite::edge_kind_from_token",
+          "source_ref": "src_src_sqlite_rs",
+          "range": {
+            "start_line": 202,
+            "end_line": 204
+          },
+          "content_hash": "sha256:e5ea2108b4134a31ce6634ed80b33ec6604747fa8b3864905e51510bcc01b68e"
+        },
+        {
+          "symbol_id": "sym_gear_memory__sqlite__enum_token",
+          "kind": "function",
+          "name": "gear_memory::sqlite::enum_token",
+          "source_ref": "src_src_sqlite_rs",
+          "range": {
+            "start_line": 184,
+            "end_line": 192
+          },
+          "content_hash": "sha256:19ab6321d73a5ea9ae51af12fa15bc138eb6d6cb6353e1aebee98e4352d2cc6d"
+        },
+        {
+          "symbol_id": "sym_gear_memory__sqlite__from_json",
+          "kind": "function",
+          "name": "gear_memory::sqlite::from_json",
+          "source_ref": "src_src_sqlite_rs",
+          "range": {
+            "start_line": 206,
+            "end_line": 208
+          },
+          "content_hash": "sha256:73c67e8e5a0d634c383dc77e24ff202bc44a3cf1fef7c4fa365d033f7f4312c3"
+        },
+        {
+          "symbol_id": "sym_gear_memory__sqlite__get_record_json",
+          "kind": "function",
+          "name": "gear_memory::sqlite::get_record_json",
+          "source_ref": "src_src_sqlite_rs",
+          "range": {
+            "start_line": 337,
+            "end_line": 348
+          },
+          "content_hash": "sha256:4514fa2f6fb24c9b981a1ad16eae7681cf837995691f65c26bb1b32f55b058ba"
+        },
+        {
+          "symbol_id": "sym_gear_memory__sqlite__insert_code_map",
+          "kind": "function",
+          "name": "gear_memory::sqlite::insert_code_map",
+          "source_ref": "src_src_sqlite_rs",
+          "range": {
+            "start_line": 275,
+            "end_line": 335
+          },
+          "content_hash": "sha256:1896ed100082304c6c8b7e15e2736fc80ebf3f318294eff76353dc9b572f08c6"
+        },
+        {
+          "symbol_id": "sym_gear_memory__sqlite__insert_event_log_entry",
+          "kind": "function",
+          "name": "gear_memory::sqlite::insert_event_log_entry",
+          "source_ref": "src_src_sqlite_rs",
+          "range": {
+            "start_line": 263,
+            "end_line": 273
+          },
+          "content_hash": "sha256:cbdf0b6174913ba7ceb204f24153acee79c57f005f668a01103d1638925f8e51"
+        },
+        {
+          "symbol_id": "sym_gear_memory__sqlite__insert_memory_entry",
+          "kind": "function",
+          "name": "gear_memory::sqlite::insert_memory_entry",
+          "source_ref": "src_src_sqlite_rs",
+          "range": {
+            "start_line": 231,
+            "end_line": 246
+          },
+          "content_hash": "sha256:484d18fd7ca12c9395938d39d41198a210587a0f4dd5cf8be862650cd068f262"
+        },
+        {
+          "symbol_id": "sym_gear_memory__sqlite__insert_provenance_record",
+          "kind": "function",
+          "name": "gear_memory::sqlite::insert_provenance_record",
+          "source_ref": "src_src_sqlite_rs",
+          "range": {
+            "start_line": 248,
+            "end_line": 261
+          },
+          "content_hash": "sha256:45293d162e11962c9fee6e56c11b31743078dceecef183258f9b1ff704e84656"
+        },
+        {
+          "symbol_id": "sym_gear_memory__sqlite__insert_source_ref",
+          "kind": "function",
+          "name": "gear_memory::sqlite::insert_source_ref",
+          "source_ref": "src_src_sqlite_rs",
+          "range": {
+            "start_line": 210,
+            "end_line": 229
+          },
+          "content_hash": "sha256:3ae8f6edb205210006abee787b459f9ab7d54bdd68979ecf1470f985ef5428f9"
+        },
+        {
+          "symbol_id": "sym_gear_memory__sqlite__ser_err",
+          "kind": "function",
+          "name": "gear_memory::sqlite::ser_err",
+          "source_ref": "src_src_sqlite_rs",
+          "range": {
+            "start_line": 172,
+            "end_line": 174
+          },
+          "content_hash": "sha256:85654d094b4861d5534a4cf603850c32fa3a159b7435c2aa90a33a0abc928883"
+        },
+        {
+          "symbol_id": "sym_gear_memory__sqlite__sql_err",
+          "kind": "function",
+          "name": "gear_memory::sqlite::sql_err",
+          "source_ref": "src_src_sqlite_rs",
+          "range": {
+            "start_line": 168,
+            "end_line": 170
+          },
+          "content_hash": "sha256:af4c600a10b5d5cca047867327e344b17c14796abf4c41f7df767913fdc89b38"
+        },
+        {
+          "symbol_id": "sym_gear_memory__sqlite__symbol_kind_from_token",
+          "kind": "function",
+          "name": "gear_memory::sqlite::symbol_kind_from_token",
+          "source_ref": "src_src_sqlite_rs",
+          "range": {
+            "start_line": 198,
+            "end_line": 200
+          },
+          "content_hash": "sha256:3339041c58e09a0ff091cfc1517296ff3bca31307d8cec73dc5efff719c5bb04"
+        },
+        {
+          "symbol_id": "sym_gear_memory__sqlite__to_json",
+          "kind": "function",
+          "name": "gear_memory::sqlite::to_json",
+          "source_ref": "src_src_sqlite_rs",
+          "range": {
+            "start_line": 194,
+            "end_line": 196
+          },
+          "content_hash": "sha256:ee89edb4903fa986a22e22fa132b56109b275de59b472f7366a6f79360be65fc"
+        },
+        {
+          "symbol_id": "sym_gear_memory__sqlite__validation_err",
+          "kind": "function",
+          "name": "gear_memory::sqlite::validation_err",
+          "source_ref": "src_src_sqlite_rs",
+          "range": {
+            "start_line": 180,
+            "end_line": 182
+          },
+          "content_hash": "sha256:c48d7e118e4fecaa1d9331a5644b1551bb0624d439806f41333bd41b8deaebe8"
+        }
+      ],
+      "edges": [
+        {
+          "from": "sym_gear_memory__lib__CodeEdge__validate",
+          "to": "sym_gear_memory__lib__validate_non_empty_field",
+          "kind": "calls"
+        },
+        {
+          "from": "sym_gear_memory__lib__CodeMapScope__validate",
+          "to": "sym_gear_memory__lib__validate_non_empty_field",
+          "kind": "calls"
+        },
+        {
+          "from": "sym_gear_memory__lib__CodeMapScope__validate",
+          "to": "sym_gear_memory__lib__validate_non_empty_list",
+          "kind": "calls"
+        },
+        {
+          "from": "sym_gear_memory__lib__CodeMap__validate",
+          "to": "sym_gear_memory__lib__SafeMetadata__validate",
+          "kind": "calls"
+        },
+        {
+          "from": "sym_gear_memory__lib__CodeMap__validate",
+          "to": "sym_gear_memory__lib__validate_non_empty_field",
+          "kind": "calls"
+        },
+        {
+          "from": "sym_gear_memory__lib__CodeMap__validate",
+          "to": "sym_gear_memory__lib__validate_non_empty_list",
+          "kind": "calls"
+        },
+        {
+          "from": "sym_gear_memory__lib__CodeMap__validate",
+          "to": "sym_gear_memory__lib__validate_timestamp_field",
+          "kind": "calls"
+        },
+        {
+          "from": "sym_gear_memory__lib__CodeSymbol__validate",
+          "to": "sym_gear_memory__lib__SafeMetadata__validate",
+          "kind": "calls"
+        },
+        {
+          "from": "sym_gear_memory__lib__CodeSymbol__validate",
+          "to": "sym_gear_memory__lib__validate_non_empty_field",
+          "kind": "calls"
+        },
+        {
+          "from": "sym_gear_memory__lib__CodeSymbol__validate",
+          "to": "sym_gear_memory__lib__validate_sha256_field",
+          "kind": "calls"
+        },
+        {
+          "from": "sym_gear_memory__lib__EventLogEntry__validate",
+          "to": "sym_gear_memory__lib__validate_metadata",
+          "kind": "calls"
+        },
+        {
+          "from": "sym_gear_memory__lib__EventLogEntry__validate",
+          "to": "sym_gear_memory__lib__validate_non_empty_field",
+          "kind": "calls"
+        },
+        {
+          "from": "sym_gear_memory__lib__EventLogEntry__validate",
+          "to": "sym_gear_memory__lib__validate_timestamp_field",
+          "kind": "calls"
+        },
+        {
+          "from": "sym_gear_memory__lib__FileStore__get_code_map",
+          "to": "sym_gear_memory__lib__FileStore__code_map_path",
+          "kind": "calls"
+        },
+        {
+          "from": "sym_gear_memory__lib__FileStore__get_code_map",
+          "to": "sym_gear_memory__lib__FileStore__read_json_file",
+          "kind": "calls"
+        },
+        {
+          "from": "sym_gear_memory__lib__FileStore__get_event_log_entry",
+          "to": "sym_gear_memory__lib__FileStore__event_log_entry_path",
+          "kind": "calls"
+        },
+        {
+          "from": "sym_gear_memory__lib__FileStore__get_event_log_entry",
+          "to": "sym_gear_memory__lib__FileStore__read_json_file",
+          "kind": "calls"
+        },
+        {
+          "from": "sym_gear_memory__lib__FileStore__get_memory_entry",
+          "to": "sym_gear_memory__lib__FileStore__memory_entry_path",
+          "kind": "calls"
+        },
+        {
+          "from": "sym_gear_memory__lib__FileStore__get_memory_entry",
+          "to": "sym_gear_memory__lib__FileStore__read_json_file",
+          "kind": "calls"
+        },
+        {
+          "from": "sym_gear_memory__lib__FileStore__get_provenance_record",
+          "to": "sym_gear_memory__lib__FileStore__provenance_record_path",
+          "kind": "calls"
+        },
+        {
+          "from": "sym_gear_memory__lib__FileStore__get_provenance_record",
+          "to": "sym_gear_memory__lib__FileStore__read_json_file",
+          "kind": "calls"
+        },
+        {
+          "from": "sym_gear_memory__lib__FileStore__get_source_ref",
+          "to": "sym_gear_memory__lib__FileStore__read_json_file",
+          "kind": "calls"
+        },
+        {
+          "from": "sym_gear_memory__lib__FileStore__get_source_ref",
+          "to": "sym_gear_memory__lib__FileStore__source_path",
+          "kind": "calls"
+        },
+        {
+          "from": "sym_gear_memory__lib__FileStore__list_all_provenance_records",
+          "to": "sym_gear_memory__lib__FileStore__list_json_files",
+          "kind": "calls"
+        },
+        {
+          "from": "sym_gear_memory__lib__FileStore__list_all_provenance_records",
+          "to": "sym_gear_memory__lib__FileStore__read_json_file",
+          "kind": "calls"
+        },
+        {
+          "from": "sym_gear_memory__lib__FileStore__list_all_provenance_records",
+          "to": "sym_gear_memory__sqlite__SqliteStore__new",
+          "kind": "calls"
+        },
+        {
+          "from": "sym_gear_memory__lib__FileStore__list_json_files",
+          "to": "sym_gear_memory__sqlite__SqliteStore__new",
+          "kind": "calls"
+        },
+        {
+          "from": "sym_gear_memory__lib__FileStore__lookup_memory_entries_by_state",
+          "to": "sym_gear_memory__lib__FileStore__list_json_files",
+          "kind": "calls"
+        },
+        {
+          "from": "sym_gear_memory__lib__FileStore__lookup_memory_entries_by_state",
+          "to": "sym_gear_memory__lib__FileStore__read_json_file",
+          "kind": "calls"
+        },
+        {
+          "from": "sym_gear_memory__lib__FileStore__lookup_memory_entries_by_state",
+          "to": "sym_gear_memory__sqlite__SqliteStore__new",
+          "kind": "calls"
+        },
+        {
+          "from": "sym_gear_memory__lib__FileStore__lookup_source_refs_by_content_hash",
+          "to": "sym_gear_memory__lib__FileStore__list_json_files",
+          "kind": "calls"
+        },
+        {
+          "from": "sym_gear_memory__lib__FileStore__lookup_source_refs_by_content_hash",
+          "to": "sym_gear_memory__lib__FileStore__read_json_file",
+          "kind": "calls"
+        },
+        {
+          "from": "sym_gear_memory__lib__FileStore__lookup_source_refs_by_content_hash",
+          "to": "sym_gear_memory__sqlite__SqliteStore__new",
+          "kind": "calls"
+        },
+        {
+          "from": "sym_gear_memory__lib__FileStore__lookup_source_refs_by_id",
+          "to": "sym_gear_memory__sqlite__SqliteStore__get_source_ref",
+          "kind": "calls"
+        },
+        {
+          "from": "sym_gear_memory__lib__FileStore__lookup_source_refs_by_origin_product",
+          "to": "sym_gear_memory__lib__FileStore__list_json_files",
+          "kind": "calls"
+        },
+        {
+          "from": "sym_gear_memory__lib__FileStore__lookup_source_refs_by_origin_product",
+          "to": "sym_gear_memory__lib__FileStore__read_json_file",
+          "kind": "calls"
+        },
+        {
+          "from": "sym_gear_memory__lib__FileStore__lookup_source_refs_by_origin_product",
+          "to": "sym_gear_memory__sqlite__SqliteStore__new",
+          "kind": "calls"
+        },
+        {
+          "from": "sym_gear_memory__lib__FileStore__lookup_source_refs_by_state",
+          "to": "sym_gear_memory__lib__FileStore__list_json_files",
+          "kind": "calls"
+        },
+        {
+          "from": "sym_gear_memory__lib__FileStore__lookup_source_refs_by_state",
+          "to": "sym_gear_memory__lib__FileStore__read_json_file",
+          "kind": "calls"
+        },
+        {
+          "from": "sym_gear_memory__lib__FileStore__lookup_source_refs_by_state",
+          "to": "sym_gear_memory__sqlite__SqliteStore__new",
+          "kind": "calls"
+        },
+        {
+          "from": "sym_gear_memory__lib__FileStore__lookup_source_refs_by_timestamp_range",
+          "to": "sym_gear_memory__lib__FileStore__list_json_files",
+          "kind": "calls"
+        },
+        {
+          "from": "sym_gear_memory__lib__FileStore__lookup_source_refs_by_timestamp_range",
+          "to": "sym_gear_memory__lib__FileStore__read_json_file",
+          "kind": "calls"
+        },
+        {
+          "from": "sym_gear_memory__lib__FileStore__lookup_source_refs_by_timestamp_range",
+          "to": "sym_gear_memory__sqlite__SqliteStore__new",
+          "kind": "calls"
+        },
+        {
+          "from": "sym_gear_memory__lib__FileStore__put_code_map",
+          "to": "sym_gear_memory__lib__FileStore__code_map_path",
+          "kind": "calls"
+        },
+        {
+          "from": "sym_gear_memory__lib__FileStore__put_code_map",
+          "to": "sym_gear_memory__lib__FileStore__write_json_file",
+          "kind": "calls"
+        },
+        {
+          "from": "sym_gear_memory__lib__FileStore__put_code_map",
+          "to": "sym_gear_memory__lib__SafeMetadata__validate",
+          "kind": "calls"
+        },
+        {
+          "from": "sym_gear_memory__lib__FileStore__put_event_log_entry",
+          "to": "sym_gear_memory__lib__FileStore__event_log_entry_path",
+          "kind": "calls"
+        },
+        {
+          "from": "sym_gear_memory__lib__FileStore__put_event_log_entry",
+          "to": "sym_gear_memory__lib__FileStore__write_json_file",
+          "kind": "calls"
+        },
+        {
+          "from": "sym_gear_memory__lib__FileStore__put_event_log_entry",
+          "to": "sym_gear_memory__lib__SafeMetadata__validate",
+          "kind": "calls"
+        },
+        {
+          "from": "sym_gear_memory__lib__FileStore__put_memory_entry",
+          "to": "sym_gear_memory__lib__FileStore__memory_entry_path",
+          "kind": "calls"
+        },
+        {
+          "from": "sym_gear_memory__lib__FileStore__put_memory_entry",
+          "to": "sym_gear_memory__lib__FileStore__write_json_file",
+          "kind": "calls"
+        },
+        {
+          "from": "sym_gear_memory__lib__FileStore__put_memory_entry",
+          "to": "sym_gear_memory__lib__SafeMetadata__validate",
+          "kind": "calls"
+        },
+        {
+          "from": "sym_gear_memory__lib__FileStore__put_provenance_record",
+          "to": "sym_gear_memory__lib__FileStore__provenance_record_path",
+          "kind": "calls"
+        },
+        {
+          "from": "sym_gear_memory__lib__FileStore__put_provenance_record",
+          "to": "sym_gear_memory__lib__FileStore__write_json_file",
+          "kind": "calls"
+        },
+        {
+          "from": "sym_gear_memory__lib__FileStore__put_provenance_record",
+          "to": "sym_gear_memory__lib__SafeMetadata__validate",
+          "kind": "calls"
+        },
+        {
+          "from": "sym_gear_memory__lib__FileStore__put_source_ref",
+          "to": "sym_gear_memory__lib__FileStore__source_path",
+          "kind": "calls"
+        },
+        {
+          "from": "sym_gear_memory__lib__FileStore__put_source_ref",
+          "to": "sym_gear_memory__lib__FileStore__write_json_file",
+          "kind": "calls"
+        },
+        {
+          "from": "sym_gear_memory__lib__FileStore__put_source_ref",
+          "to": "sym_gear_memory__lib__SafeMetadata__validate",
+          "kind": "calls"
+        },
+        {
+          "from": "sym_gear_memory__lib__GearMemoryBundle__validate",
+          "to": "sym_gear_memory__lib__SafeMetadata__validate",
+          "kind": "calls"
+        },
+        {
+          "from": "sym_gear_memory__lib__IndexMetadata__validate",
+          "to": "sym_gear_memory__lib__validate_timestamp_field",
+          "kind": "calls"
+        },
+        {
+          "from": "sym_gear_memory__lib__MemoryEntry__validate",
+          "to": "sym_gear_memory__lib__SafeMetadata__validate",
+          "kind": "calls"
+        },
+        {
+          "from": "sym_gear_memory__lib__MemoryEntry__validate",
+          "to": "sym_gear_memory__lib__validate_non_empty_field",
+          "kind": "calls"
+        },
+        {
+          "from": "sym_gear_memory__lib__MemoryEntry__validate",
+          "to": "sym_gear_memory__lib__validate_sha256_field",
+          "kind": "calls"
+        },
+        {
+          "from": "sym_gear_memory__lib__MemoryEntry__validate",
+          "to": "sym_gear_memory__lib__validate_timestamp_field",
+          "kind": "calls"
+        },
+        {
+          "from": "sym_gear_memory__lib__ProvenanceRecord__stable_hash",
+          "to": "sym_gear_memory__lib__stable_json_hash",
+          "kind": "calls"
+        },
+        {
+          "from": "sym_gear_memory__lib__ProvenanceRecord__validate",
+          "to": "sym_gear_memory__lib__validate_metadata",
+          "kind": "calls"
+        },
+        {
+          "from": "sym_gear_memory__lib__ProvenanceRecord__validate",
+          "to": "sym_gear_memory__lib__validate_non_empty_field",
+          "kind": "calls"
+        },
+        {
+          "from": "sym_gear_memory__lib__ProvenanceRecord__validate",
+          "to": "sym_gear_memory__lib__validate_non_empty_list",
+          "kind": "calls"
+        },
+        {
+          "from": "sym_gear_memory__lib__ProvenanceRecord__validate",
+          "to": "sym_gear_memory__lib__validate_timestamp_field",
+          "kind": "calls"
+        },
+        {
+          "from": "sym_gear_memory__lib__SafeMetadata__stable_hash",
+          "to": "sym_gear_memory__lib__stable_json_hash",
+          "kind": "calls"
+        },
+        {
+          "from": "sym_gear_memory__lib__SafeMetadata__validate",
+          "to": "sym_gear_memory__lib__is_secret_like_key",
+          "kind": "calls"
+        },
+        {
+          "from": "sym_gear_memory__lib__SourceRef__validate",
+          "to": "sym_gear_memory__lib__validate_metadata",
+          "kind": "calls"
+        },
+        {
+          "from": "sym_gear_memory__lib__SourceRef__validate",
+          "to": "sym_gear_memory__lib__validate_non_empty_field",
+          "kind": "calls"
+        },
+        {
+          "from": "sym_gear_memory__lib__SourceRef__validate",
+          "to": "sym_gear_memory__lib__validate_sha256_field",
+          "kind": "calls"
+        },
+        {
+          "from": "sym_gear_memory__lib__SourceRef__validate",
+          "to": "sym_gear_memory__lib__validate_timestamp_field",
+          "kind": "calls"
+        },
+        {
+          "from": "sym_gear_memory__lib__erase_source",
+          "to": "sym_gear_memory__lib__SafeMetadata__from_pairs",
+          "kind": "calls"
+        },
+        {
+          "from": "sym_gear_memory__lib__erase_source",
+          "to": "sym_gear_memory__sqlite__SqliteStore__get_source_ref",
+          "kind": "calls"
+        },
+        {
+          "from": "sym_gear_memory__lib__erase_source",
+          "to": "sym_gear_memory__sqlite__SqliteStore__put_event_log_entry",
+          "kind": "calls"
+        },
+        {
+          "from": "sym_gear_memory__lib__erase_source",
+          "to": "sym_gear_memory__sqlite__SqliteStore__put_provenance_record",
+          "kind": "calls"
+        },
+        {
+          "from": "sym_gear_memory__lib__erase_source",
+          "to": "sym_gear_memory__sqlite__SqliteStore__put_source_ref",
+          "kind": "calls"
+        },
+        {
+          "from": "sym_gear_memory__lib__validate_metadata",
+          "to": "sym_gear_memory__lib__SafeMetadata__validate",
+          "kind": "calls"
+        },
+        {
+          "from": "sym_gear_memory__lib__validate_sha256_field",
+          "to": "sym_gear_memory__lib__is_valid_sha256",
+          "kind": "calls"
+        },
+        {
+          "from": "sym_gear_memory__main__cmd_delete",
+          "to": "sym_gear_memory__main__current_timestamp_rfc3339",
+          "kind": "calls"
+        },
+        {
+          "from": "sym_gear_memory__main__cmd_delete",
+          "to": "sym_gear_memory__sqlite__SqliteStore__new",
+          "kind": "calls"
+        },
+        {
+          "from": "sym_gear_memory__main__cmd_get",
+          "to": "sym_gear_memory__sqlite__SqliteStore__get_source_ref",
+          "kind": "calls"
+        },
+        {
+          "from": "sym_gear_memory__main__cmd_get",
+          "to": "sym_gear_memory__sqlite__SqliteStore__new",
+          "kind": "calls"
+        },
+        {
+          "from": "sym_gear_memory__main__cmd_ingest",
+          "to": "sym_gear_memory__main__current_timestamp_rfc3339",
+          "kind": "calls"
+        },
+        {
+          "from": "sym_gear_memory__main__cmd_ingest",
+          "to": "sym_gear_memory__main__print_envelope",
+          "kind": "calls"
+        },
+        {
+          "from": "sym_gear_memory__main__cmd_ingest",
+          "to": "sym_gear_memory__main__take_db_path",
+          "kind": "calls"
+        },
+        {
+          "from": "sym_gear_memory__main__cmd_ingest",
+          "to": "sym_gear_memory__sqlite__SqliteStore__ingest_bundle",
+          "kind": "calls"
+        },
+        {
+          "from": "sym_gear_memory__main__cmd_ingest",
+          "to": "sym_gear_memory__sqlite__SqliteStore__new",
+          "kind": "calls"
+        },
+        {
+          "from": "sym_gear_memory__main__cmd_list",
+          "to": "sym_gear_memory__sqlite__SqliteStore__lookup_source_refs_by_state",
+          "kind": "calls"
+        },
+        {
+          "from": "sym_gear_memory__main__cmd_list",
+          "to": "sym_gear_memory__sqlite__SqliteStore__new",
+          "kind": "calls"
+        },
+        {
+          "from": "sym_gear_memory__main__cmd_query",
+          "to": "sym_gear_memory__main__print_envelope",
+          "kind": "calls"
+        },
+        {
+          "from": "sym_gear_memory__main__cmd_query",
+          "to": "sym_gear_memory__main__take_db_path",
+          "kind": "calls"
+        },
+        {
+          "from": "sym_gear_memory__main__cmd_query",
+          "to": "sym_gear_memory__main__take_flag",
+          "kind": "calls"
+        },
+        {
+          "from": "sym_gear_memory__main__cmd_query",
+          "to": "sym_gear_memory__sqlite__SqliteStore__new",
+          "kind": "calls"
+        },
+        {
+          "from": "sym_gear_memory__main__cmd_query",
+          "to": "sym_gear_memory__sqlite__SqliteStore__symbol_search",
+          "kind": "calls"
+        },
+        {
+          "from": "sym_gear_memory__main__cmd_snippet",
+          "to": "sym_gear_memory__main__print_envelope",
+          "kind": "calls"
+        },
+        {
+          "from": "sym_gear_memory__main__cmd_snippet",
+          "to": "sym_gear_memory__main__take_db_path",
+          "kind": "calls"
+        },
+        {
+          "from": "sym_gear_memory__main__cmd_snippet",
+          "to": "sym_gear_memory__sqlite__SqliteStore__get_code_map",
+          "kind": "calls"
+        },
+        {
+          "from": "sym_gear_memory__main__cmd_snippet",
+          "to": "sym_gear_memory__sqlite__SqliteStore__get_source_ref",
+          "kind": "calls"
+        },
+        {
+          "from": "sym_gear_memory__main__cmd_snippet",
+          "to": "sym_gear_memory__sqlite__SqliteStore__new",
+          "kind": "calls"
+        },
+        {
+          "from": "sym_gear_memory__main__cmd_stats",
+          "to": "sym_gear_memory__main__print_envelope",
+          "kind": "calls"
+        },
+        {
+          "from": "sym_gear_memory__main__cmd_stats",
+          "to": "sym_gear_memory__main__take_db_path",
+          "kind": "calls"
+        },
+        {
+          "from": "sym_gear_memory__main__cmd_stats",
+          "to": "sym_gear_memory__sqlite__SqliteStore__new",
+          "kind": "calls"
+        },
+        {
+          "from": "sym_gear_memory__main__cmd_stats",
+          "to": "sym_gear_memory__sqlite__SqliteStore__stats",
+          "kind": "calls"
+        },
+        {
+          "from": "sym_gear_memory__main__cmd_trace",
+          "to": "sym_gear_memory__main__print_envelope",
+          "kind": "calls"
+        },
+        {
+          "from": "sym_gear_memory__main__cmd_trace",
+          "to": "sym_gear_memory__main__take_db_path",
+          "kind": "calls"
+        },
+        {
+          "from": "sym_gear_memory__main__cmd_trace",
+          "to": "sym_gear_memory__main__take_flag",
+          "kind": "calls"
+        },
+        {
+          "from": "sym_gear_memory__main__cmd_trace",
+          "to": "sym_gear_memory__sqlite__SqliteStore__new",
+          "kind": "calls"
+        },
+        {
+          "from": "sym_gear_memory__main__cmd_trace",
+          "to": "sym_gear_memory__sqlite__SqliteStore__trace_bfs",
+          "kind": "calls"
+        },
+        {
+          "from": "sym_gear_memory__main__cmd_validate",
+          "to": "sym_gear_memory__lib__SafeMetadata__validate",
+          "kind": "calls"
+        },
+        {
+          "from": "sym_gear_memory__main__current_timestamp_rfc3339",
+          "to": "sym_gear_memory__main__rfc3339_from_unix_secs",
+          "kind": "calls"
+        },
+        {
+          "from": "sym_gear_memory__main__main",
+          "to": "sym_gear_memory__main__cmd_delete",
+          "kind": "calls"
+        },
+        {
+          "from": "sym_gear_memory__main__main",
+          "to": "sym_gear_memory__main__cmd_get",
+          "kind": "calls"
+        },
+        {
+          "from": "sym_gear_memory__main__main",
+          "to": "sym_gear_memory__main__cmd_ingest",
+          "kind": "calls"
+        },
+        {
+          "from": "sym_gear_memory__main__main",
+          "to": "sym_gear_memory__main__cmd_list",
+          "kind": "calls"
+        },
+        {
+          "from": "sym_gear_memory__main__main",
+          "to": "sym_gear_memory__main__cmd_query",
+          "kind": "calls"
+        },
+        {
+          "from": "sym_gear_memory__main__main",
+          "to": "sym_gear_memory__main__cmd_snippet",
+          "kind": "calls"
+        },
+        {
+          "from": "sym_gear_memory__main__main",
+          "to": "sym_gear_memory__main__cmd_stats",
+          "kind": "calls"
+        },
+        {
+          "from": "sym_gear_memory__main__main",
+          "to": "sym_gear_memory__main__cmd_trace",
+          "kind": "calls"
+        },
+        {
+          "from": "sym_gear_memory__main__main",
+          "to": "sym_gear_memory__main__cmd_validate",
+          "kind": "calls"
+        },
+        {
+          "from": "sym_gear_memory__main__main",
+          "to": "sym_gear_memory__main__usage",
+          "kind": "calls"
+        },
+        {
+          "from": "sym_gear_memory__main__take_db_path",
+          "to": "sym_gear_memory__main__take_flag",
+          "kind": "calls"
+        },
+        {
+          "from": "sym_gear_memory__sqlite__SqliteStore__get_code_map",
+          "to": "sym_gear_memory__sqlite__SqliteStore__lock",
+          "kind": "calls"
+        },
+        {
+          "from": "sym_gear_memory__sqlite__SqliteStore__get_code_map",
+          "to": "sym_gear_memory__sqlite__get_record_json",
+          "kind": "calls"
+        },
+        {
+          "from": "sym_gear_memory__sqlite__SqliteStore__get_event_log_entry",
+          "to": "sym_gear_memory__sqlite__SqliteStore__lock",
+          "kind": "calls"
+        },
+        {
+          "from": "sym_gear_memory__sqlite__SqliteStore__get_event_log_entry",
+          "to": "sym_gear_memory__sqlite__get_record_json",
+          "kind": "calls"
+        },
+        {
+          "from": "sym_gear_memory__sqlite__SqliteStore__get_memory_entry",
+          "to": "sym_gear_memory__sqlite__SqliteStore__lock",
+          "kind": "calls"
+        },
+        {
+          "from": "sym_gear_memory__sqlite__SqliteStore__get_memory_entry",
+          "to": "sym_gear_memory__sqlite__get_record_json",
+          "kind": "calls"
+        },
+        {
+          "from": "sym_gear_memory__sqlite__SqliteStore__get_provenance_record",
+          "to": "sym_gear_memory__sqlite__SqliteStore__lock",
+          "kind": "calls"
+        },
+        {
+          "from": "sym_gear_memory__sqlite__SqliteStore__get_provenance_record",
+          "to": "sym_gear_memory__sqlite__get_record_json",
+          "kind": "calls"
+        },
+        {
+          "from": "sym_gear_memory__sqlite__SqliteStore__get_source_ref",
+          "to": "sym_gear_memory__sqlite__SqliteStore__lock",
+          "kind": "calls"
+        },
+        {
+          "from": "sym_gear_memory__sqlite__SqliteStore__get_source_ref",
+          "to": "sym_gear_memory__sqlite__get_record_json",
+          "kind": "calls"
+        },
+        {
+          "from": "sym_gear_memory__sqlite__SqliteStore__ingest_bundle",
+          "to": "sym_gear_memory__lib__SafeMetadata__validate",
+          "kind": "calls"
+        },
+        {
+          "from": "sym_gear_memory__sqlite__SqliteStore__ingest_bundle",
+          "to": "sym_gear_memory__sqlite__SqliteStore__lock",
+          "kind": "calls"
+        },
+        {
+          "from": "sym_gear_memory__sqlite__SqliteStore__ingest_bundle",
+          "to": "sym_gear_memory__sqlite__insert_code_map",
+          "kind": "calls"
+        },
+        {
+          "from": "sym_gear_memory__sqlite__SqliteStore__ingest_bundle",
+          "to": "sym_gear_memory__sqlite__insert_event_log_entry",
+          "kind": "calls"
+        },
+        {
+          "from": "sym_gear_memory__sqlite__SqliteStore__ingest_bundle",
+          "to": "sym_gear_memory__sqlite__insert_memory_entry",
+          "kind": "calls"
+        },
+        {
+          "from": "sym_gear_memory__sqlite__SqliteStore__ingest_bundle",
+          "to": "sym_gear_memory__sqlite__insert_provenance_record",
+          "kind": "calls"
+        },
+        {
+          "from": "sym_gear_memory__sqlite__SqliteStore__ingest_bundle",
+          "to": "sym_gear_memory__sqlite__insert_source_ref",
+          "kind": "calls"
+        },
+        {
+          "from": "sym_gear_memory__sqlite__SqliteStore__list_all_provenance_records",
+          "to": "sym_gear_memory__sqlite__SqliteStore__lock",
+          "kind": "calls"
+        },
+        {
+          "from": "sym_gear_memory__sqlite__SqliteStore__list_all_provenance_records",
+          "to": "sym_gear_memory__sqlite__collect_records",
+          "kind": "calls"
+        },
+        {
+          "from": "sym_gear_memory__sqlite__SqliteStore__lookup_memory_entries_by_state",
+          "to": "sym_gear_memory__sqlite__SqliteStore__lock",
+          "kind": "calls"
+        },
+        {
+          "from": "sym_gear_memory__sqlite__SqliteStore__lookup_memory_entries_by_state",
+          "to": "sym_gear_memory__sqlite__collect_records",
+          "kind": "calls"
+        },
+        {
+          "from": "sym_gear_memory__sqlite__SqliteStore__lookup_memory_entries_by_state",
+          "to": "sym_gear_memory__sqlite__enum_token",
+          "kind": "calls"
+        },
+        {
+          "from": "sym_gear_memory__sqlite__SqliteStore__lookup_source_refs_by_content_hash",
+          "to": "sym_gear_memory__sqlite__SqliteStore__lock",
+          "kind": "calls"
+        },
+        {
+          "from": "sym_gear_memory__sqlite__SqliteStore__lookup_source_refs_by_content_hash",
+          "to": "sym_gear_memory__sqlite__collect_records",
+          "kind": "calls"
+        },
+        {
+          "from": "sym_gear_memory__sqlite__SqliteStore__lookup_source_refs_by_id",
+          "to": "sym_gear_memory__sqlite__SqliteStore__get_source_ref",
+          "kind": "calls"
+        },
+        {
+          "from": "sym_gear_memory__sqlite__SqliteStore__lookup_source_refs_by_origin_product",
+          "to": "sym_gear_memory__sqlite__SqliteStore__lock",
+          "kind": "calls"
+        },
+        {
+          "from": "sym_gear_memory__sqlite__SqliteStore__lookup_source_refs_by_origin_product",
+          "to": "sym_gear_memory__sqlite__collect_records",
+          "kind": "calls"
+        },
+        {
+          "from": "sym_gear_memory__sqlite__SqliteStore__lookup_source_refs_by_state",
+          "to": "sym_gear_memory__sqlite__SqliteStore__lock",
+          "kind": "calls"
+        },
+        {
+          "from": "sym_gear_memory__sqlite__SqliteStore__lookup_source_refs_by_state",
+          "to": "sym_gear_memory__sqlite__collect_records",
+          "kind": "calls"
+        },
+        {
+          "from": "sym_gear_memory__sqlite__SqliteStore__lookup_source_refs_by_state",
+          "to": "sym_gear_memory__sqlite__enum_token",
+          "kind": "calls"
+        },
+        {
+          "from": "sym_gear_memory__sqlite__SqliteStore__lookup_source_refs_by_timestamp_range",
+          "to": "sym_gear_memory__sqlite__SqliteStore__lock",
+          "kind": "calls"
+        },
+        {
+          "from": "sym_gear_memory__sqlite__SqliteStore__lookup_source_refs_by_timestamp_range",
+          "to": "sym_gear_memory__sqlite__collect_records",
+          "kind": "calls"
+        },
+        {
+          "from": "sym_gear_memory__sqlite__SqliteStore__put_code_map",
+          "to": "sym_gear_memory__sqlite__SqliteStore__lock",
+          "kind": "calls"
+        },
+        {
+          "from": "sym_gear_memory__sqlite__SqliteStore__put_code_map",
+          "to": "sym_gear_memory__sqlite__insert_code_map",
+          "kind": "calls"
+        },
+        {
+          "from": "sym_gear_memory__sqlite__SqliteStore__put_event_log_entry",
+          "to": "sym_gear_memory__sqlite__SqliteStore__lock",
+          "kind": "calls"
+        },
+        {
+          "from": "sym_gear_memory__sqlite__SqliteStore__put_event_log_entry",
+          "to": "sym_gear_memory__sqlite__insert_event_log_entry",
+          "kind": "calls"
+        },
+        {
+          "from": "sym_gear_memory__sqlite__SqliteStore__put_memory_entry",
+          "to": "sym_gear_memory__sqlite__SqliteStore__lock",
+          "kind": "calls"
+        },
+        {
+          "from": "sym_gear_memory__sqlite__SqliteStore__put_memory_entry",
+          "to": "sym_gear_memory__sqlite__insert_memory_entry",
+          "kind": "calls"
+        },
+        {
+          "from": "sym_gear_memory__sqlite__SqliteStore__put_provenance_record",
+          "to": "sym_gear_memory__sqlite__SqliteStore__lock",
+          "kind": "calls"
+        },
+        {
+          "from": "sym_gear_memory__sqlite__SqliteStore__put_provenance_record",
+          "to": "sym_gear_memory__sqlite__insert_provenance_record",
+          "kind": "calls"
+        },
+        {
+          "from": "sym_gear_memory__sqlite__SqliteStore__put_source_ref",
+          "to": "sym_gear_memory__sqlite__SqliteStore__lock",
+          "kind": "calls"
+        },
+        {
+          "from": "sym_gear_memory__sqlite__SqliteStore__put_source_ref",
+          "to": "sym_gear_memory__sqlite__insert_source_ref",
+          "kind": "calls"
+        },
+        {
+          "from": "sym_gear_memory__sqlite__SqliteStore__stats",
+          "to": "sym_gear_memory__sqlite__SqliteStore__lock",
+          "kind": "calls"
+        },
+        {
+          "from": "sym_gear_memory__sqlite__SqliteStore__stats",
+          "to": "sym_gear_memory__sqlite__SqliteStore__new",
+          "kind": "calls"
+        },
+        {
+          "from": "sym_gear_memory__sqlite__SqliteStore__symbol_neighbors",
+          "to": "sym_gear_memory__sqlite__SqliteStore__lock",
+          "kind": "calls"
+        },
+        {
+          "from": "sym_gear_memory__sqlite__SqliteStore__symbol_neighbors",
+          "to": "sym_gear_memory__sqlite__SqliteStore__new",
+          "kind": "calls"
+        },
+        {
+          "from": "sym_gear_memory__sqlite__SqliteStore__symbol_neighbors",
+          "to": "sym_gear_memory__sqlite__edge_kind_from_token",
+          "kind": "calls"
+        },
+        {
+          "from": "sym_gear_memory__sqlite__SqliteStore__symbol_search",
+          "to": "sym_gear_memory__sqlite__SqliteStore__lock",
+          "kind": "calls"
+        },
+        {
+          "from": "sym_gear_memory__sqlite__SqliteStore__symbol_search",
+          "to": "sym_gear_memory__sqlite__SqliteStore__new",
+          "kind": "calls"
+        },
+        {
+          "from": "sym_gear_memory__sqlite__SqliteStore__symbol_search",
+          "to": "sym_gear_memory__sqlite__symbol_kind_from_token",
+          "kind": "calls"
+        },
+        {
+          "from": "sym_gear_memory__sqlite__SqliteStore__trace_bfs",
+          "to": "sym_gear_memory__sqlite__SqliteStore__new",
+          "kind": "calls"
+        },
+        {
+          "from": "sym_gear_memory__sqlite__SqliteStore__trace_bfs",
+          "to": "sym_gear_memory__sqlite__SqliteStore__symbol_neighbors",
+          "kind": "calls"
+        },
+        {
+          "from": "sym_gear_memory__sqlite__collect_records",
+          "to": "sym_gear_memory__sqlite__SqliteStore__new",
+          "kind": "calls"
+        },
+        {
+          "from": "sym_gear_memory__sqlite__collect_records",
+          "to": "sym_gear_memory__sqlite__from_json",
+          "kind": "calls"
+        },
+        {
+          "from": "sym_gear_memory__sqlite__get_record_json",
+          "to": "sym_gear_memory__sqlite__from_json",
+          "kind": "calls"
+        },
+        {
+          "from": "sym_gear_memory__sqlite__insert_code_map",
+          "to": "sym_gear_memory__lib__SafeMetadata__validate",
+          "kind": "calls"
+        },
+        {
+          "from": "sym_gear_memory__sqlite__insert_event_log_entry",
+          "to": "sym_gear_memory__lib__SafeMetadata__validate",
+          "kind": "calls"
+        },
+        {
+          "from": "sym_gear_memory__sqlite__insert_memory_entry",
+          "to": "sym_gear_memory__lib__SafeMetadata__validate",
+          "kind": "calls"
+        },
+        {
+          "from": "sym_gear_memory__sqlite__insert_provenance_record",
+          "to": "sym_gear_memory__lib__SafeMetadata__validate",
+          "kind": "calls"
+        },
+        {
+          "from": "sym_gear_memory__sqlite__insert_source_ref",
+          "to": "sym_gear_memory__lib__SafeMetadata__validate",
+          "kind": "calls"
+        }
+      ],
+      "state": "active",
+      "created_at": "2026-07-02T00:00:00Z"
+    }
+  ],
+  "provenance_records": [
+    {
+      "provenance_id": "prov_fixture_generation",
+      "actor_ref": "gear-memory:fixture-generator",
+      "operation": "created",
+      "inputs": [
+        "src/lib.rs",
+        "src/main.rs",
+        "src/sqlite.rs"
+      ],
+      "outputs": [
+        "cm_gear_memory_repo"
+      ],
+      "tool_ref": "gear-memory-fixture-generator@0.0.0",
+      "timestamp": "2026-07-02T00:00:00Z",
+      "metadata": {}
+    }
+  ]
+}

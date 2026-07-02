@@ -118,10 +118,12 @@ checksum = "77ce24cb58228fbb8aa041425bb1050850ac19177686ea6e0f41a70416f56fdb"
 name = "gear-memory"
 version = "0.0.0"
 dependencies = [
+ "proc-macro2",
  "rusqlite",
  "serde",
  "serde_json",
  "sha2",
+ "syn",
  "tempfile",
  "time",
 ]
