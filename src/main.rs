@@ -2,6 +2,7 @@ use std::env;
 use std::fs;
 use std::path::Path;
 use std::process;
+use std::time::{SystemTime, UNIX_EPOCH};
 
 use gear_memory::{FileStore, GearMemoryBundle, Store};
 use time::OffsetDateTime;
@@ -63,8 +64,14 @@ fn validate_bundle_file(path: &str) -> Result<(), Box<dyn std::error::Error>> {
     Ok(())
 }
 
-fn current_timestamp_rfc3339() -> Result<String, time::error::Format> {
-    OffsetDateTime::now_utc().format(&Rfc3339)
+fn rfc3339_from_unix_secs(secs: i64) -> Result<String, Box<dyn std::error::Error>> {
+    let timestamp = OffsetDateTime::from_unix_timestamp(secs)?;
+    Ok(timestamp.format(&Rfc3339)?)
+}
+
+fn current_timestamp_rfc3339() -> Result<String, Box<dyn std::error::Error>> {
+    let secs = SystemTime::now().duration_since(UNIX_EPOCH)?.as_secs();
+    rfc3339_from_unix_secs(i64::try_from(secs)?)
 }
 
 fn handle_get(store_root: &str, source_id: &str) -> Result<(), Box<dyn std::error::Error>> {
@@ -136,4 +143,42 @@ fn handle_delete(
     store.mark_deleted(source_id, reason, &timestamp)?;
 
     Ok(())
+}
+
+#[cfg(test)]
+mod tests {
+    use time::OffsetDateTime;
+    use time::format_description::well_known::Rfc3339;
+
+    use super::rfc3339_from_unix_secs;
+
+    #[test]
+    fn epoch_boundaries_format_exactly() {
+        assert_eq!(
+            rfc3339_from_unix_secs(0).expect("format epoch"),
+            "1970-01-01T00:00:00Z"
+        );
+        // Day 31: the removed hand-rolled formula mapped this date to January 29.
+        assert_eq!(
+            rfc3339_from_unix_secs(2_592_000).expect("format day 31"),
+            "1970-01-31T00:00:00Z"
+        );
+        // Leap day: unrepresentable in a 365-day approximation.
+        assert_eq!(
+            rfc3339_from_unix_secs(951_782_400).expect("format leap day"),
+            "2000-02-29T00:00:00Z"
+        );
+    }
+
+    #[test]
+    fn every_day_of_a_leap_and_a_common_year_parses_as_rfc3339() {
+        // 2024-01-01T00:00:00Z and 2026-01-01T00:00:00Z, one timestamp per day.
+        for year_start in [1_704_067_200_i64, 1_767_225_600] {
+            for day in 0..366 {
+                let formatted =
+                    rfc3339_from_unix_secs(year_start + day * 86_400).expect("format day");
+                OffsetDateTime::parse(&formatted, &Rfc3339).expect("parses as RFC3339");
+            }
+        }
+    }
 }
