@@ -4,6 +4,8 @@ use std::path::Path;
 use std::process;
 
 use gear_memory::{FileStore, GearMemoryBundle, Store};
+use time::OffsetDateTime;
+use time::format_description::well_known::Rfc3339;
 
 fn main() {
     let mut args = env::args().skip(1);
@@ -61,30 +63,8 @@ fn validate_bundle_file(path: &str) -> Result<(), Box<dyn std::error::Error>> {
     Ok(())
 }
 
-fn format_current_timestamp() -> String {
-    // Return a valid RFC3339 timestamp.
-    // For CLI use, this uses a simplification: seconds since epoch mod to get H:M:S.
-    // Production code should use chrono or time crate with serde feature.
-    use std::time::{SystemTime, UNIX_EPOCH};
-
-    let now = SystemTime::now();
-    let secs_since_epoch = now.duration_since(UNIX_EPOCH).unwrap_or_default().as_secs();
-
-    // Very simple approximation for demonstration
-    let day_of_year = (secs_since_epoch / 86400) % 365;
-    let year = 1970 + (secs_since_epoch / (365 * 86400));
-    let month = 1 + ((day_of_year * 12) / 365);
-    let day = 1 + ((day_of_year * 28) / (365 / 12));
-
-    let secs_in_day = secs_since_epoch % 86400;
-    let hour = secs_in_day / 3600;
-    let minute = (secs_in_day % 3600) / 60;
-    let second = secs_in_day % 60;
-
-    format!(
-        "{:04}-{:02}-{:02}T{:02}:{:02}:{:02}Z",
-        year, month, day, hour, minute, second
-    )
+fn current_timestamp_rfc3339() -> Result<String, time::error::Format> {
+    OffsetDateTime::now_utc().format(&Rfc3339)
 }
 
 fn handle_get(store_root: &str, source_id: &str) -> Result<(), Box<dyn std::error::Error>> {
@@ -151,8 +131,7 @@ fn handle_delete(
 ) -> Result<(), Box<dyn std::error::Error>> {
     let store = FileStore::new(Path::new(store_root))?;
 
-    // Use current UTC timestamp (note: must be RFC3339 format)
-    let timestamp = format_current_timestamp();
+    let timestamp = current_timestamp_rfc3339()?;
 
     store.mark_deleted(source_id, reason, &timestamp)?;
 
